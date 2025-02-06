@@ -1,7 +1,7 @@
 # About
 This repository is home to the Interactive Research Map. It was created as part of a project seminar during winter term 2022/23.
 The Research Map visualizes and contextualizes research output of the Department of Information Systems of the University of Muenster.
-To understand how it was created and how each component works, please refer to the repository’s [Wiki](https://github.com/HendrikDroste/research-map/wiki).
+To understand how it was created and how each component works, please refer to the repository’s [Wiki](https://github.com/leoncena/Research-Map-WWU/wiki).
 
 # Getting Started
 ## Prerequisites
