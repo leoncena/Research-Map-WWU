@@ -1,0 +1,47 @@
+{
+  "name": "next-flk",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@meilisearch/instant-meilisearch": "^0.10.0",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.6",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/calendar": "^0.80.0",
+    "@nivo/core": "^0.80.0",
+    "@nivo/line": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
+    "@nivo/sunburst": "^0.80.0",
+    "@types/react-instantsearch-dom": "^6.12.3",
+    "chart.js": "^4.2.0",
+    "d3": "^7.8.2",
+    "d3-cloud": "^1.2.5",
+    "d3-simple-slider": "^1.10.4",
+    "eslint": "8.27.0",
+    "eslint-config-next": "13.0.4",
+    "mongodb": "^4.13.0",
+    "next": "^13.0.4",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-instantsearch-dom": "^6.38.1",
+    "react-instantsearch-hooks-web": "^6.38.2",
+    "swr": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.0",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4"
+  }
+}

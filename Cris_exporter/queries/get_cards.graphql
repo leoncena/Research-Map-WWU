@@ -1,0 +1,28 @@
+query {
+    cardList(first: 100, after: "") {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        list {
+            node {
+                cfEndDate
+                cfUri
+                consultationHours
+                email
+                fax
+                id
+                identifierC4
+                individualJobDesc
+                jobTitle
+                phone
+                phoneLaboratory
+                roomNumber
+                roomNumberLaboratory
+                status
+            }
+        }
+    }
+}

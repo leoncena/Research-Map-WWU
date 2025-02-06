@@ -1,0 +1,19 @@
+query {
+    person(id: "") {
+        connections {
+            publications(first: 100, after: "") {
+                pageInfo {
+                    startCursor
+                    endCursor
+                    hasNextPage
+                    hasPreviousPage
+                }
+                edges {
+                    node {
+                        id
+                    }
+                }
+            }
+        }
+    }
+}

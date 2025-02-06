@@ -1,0 +1,13 @@
+query {
+    organisation(id: "") {
+        connections {
+            organisations {
+                edges {
+                    node {
+                        id
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+query {
+    organisation(id: "") {
+        connections {
+            persons(first: 100, after: "") {
+                pageInfo {
+                    startCursor
+                    endCursor
+                    hasPreviousPage
+                    hasNextPage
+                }
+                edges {
+                    node {
+                        id
+                    }
+                }
+            }
+        }
+    }
+}

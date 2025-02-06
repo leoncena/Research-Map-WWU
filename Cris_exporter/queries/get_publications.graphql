@@ -1,0 +1,88 @@
+query {
+    publicationList(first: 100, after: "") {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        list {
+            node {
+                id
+                status
+                articleNumber
+                articleNumberWwu
+                authorIsOrganisation
+                bookTitle
+                broadcastShow
+                broadcastStation
+                cfAbstr
+                cfCityTown
+                cfEdition
+                cfEndPage
+                cfIsbn
+                cfIssn
+                cfIssue
+                cfLang {
+                    cfName
+                }
+                cfLangOfTranslatedTitle {
+                    cfName
+                }
+                cfResPublDate
+                cfSeries
+                cfStartPage
+                cfTitle
+                cfTotalPages
+                cfUri
+                cfVol
+                comments
+                conferenceVenue
+                country {
+                    cfName
+                }
+                distributedBy
+                doi
+                editorIsOrganisation
+                editorList
+                externalOrInternal
+                externalOrInternalId
+                graduationOrga
+                graduationType
+                graduationYear
+                isiId
+                isPreprint
+                journal {
+                    id
+                }
+                journalName
+                keywords
+                nameOfConference
+                numberOfPages
+                objectOfRecension
+                pagesRange
+                peerReviewed
+                peerReviewedId
+                publicationType
+                publicationTypeId
+                publisher
+                publisherDetails {
+                    id
+                }
+                publStatus
+                publStatusId
+                publYear
+                pubmedId
+                scopusId
+                sourceOfInfo
+                srcAuthors
+                storageMedium
+                titleInOtherLanguage
+                typeOfThesis
+                volumeOfSeries
+                websiteName
+                identifierC4
+            }
+        }
+    }
+}

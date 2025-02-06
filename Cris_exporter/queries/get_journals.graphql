@@ -1,0 +1,28 @@
+query {
+    journalList(first: 100, after: "") {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        list {
+            node {
+                abbreviation
+                conditions
+                copyright
+                eissn
+                id
+                identifierC4
+                issn
+                issnl
+                name
+                postPrint
+                prePrint
+                publisher
+                roMeoColour
+                status
+            }
+        }
+    }
+}

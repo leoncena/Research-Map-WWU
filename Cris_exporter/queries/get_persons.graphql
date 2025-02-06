@@ -1,0 +1,38 @@
+query {
+    personList(first: 100, after: "") {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        list {
+            node {
+                academiaEdu
+                academicTitle
+                birthName
+                cfFamilyNames
+                cfFirstNames
+                familyNamePref
+                firstNamePref
+                googleScholarId
+                id
+                identifierC4
+                linkedinAccount
+                nameInfix
+                orcid
+                postpositionedTitle
+                researcherId
+                researchgateAccount
+                salutation
+                salutationId
+                scopusAuthorId
+                skypeAccount
+                status
+                twitterAccount
+                xingAccount
+                zivUserAccount
+            }
+        }
+    }
+}

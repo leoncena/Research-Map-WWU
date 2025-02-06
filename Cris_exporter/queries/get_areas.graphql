@@ -1,0 +1,19 @@
+query {
+    areaList(first: 100, after: "") {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        list {
+            node {
+                description
+                id
+                identifierC4
+                name
+                status
+            }
+        }
+    }
+}

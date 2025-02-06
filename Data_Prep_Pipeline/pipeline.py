@@ -1,0 +1,24 @@
+import script_data_filling_pipeline as data_filler
+import Related_Docs_Pipeline.related_documents_pipeline as related_docs_pipeline
+import Final_Data_Aggregation.script_publication_final as final_data
+import Trends_Chart.trends_chart_pipeline as trends_chart_pipeline
+import Wordcloud_Pipeline.wordcloud_pipeline as wordcloud_pipeline
+import Wordcloud_Pipeline.wordcloud_dataformat as wordcloud_dataformat
+import Wordcloud_Pipeline.wordcloud_pipeline_author as wordcloud_pipeline_author
+import Charts.generate_sunburst_json as sunburst
+import Data_Delivery.script_data_research_output as data_research_output
+import network.aut_net as aut_net
+import network.key_net as key_net
+
+
+data_filler.fire_total_filler_pipeline(target_collection='publication_filled')
+related_docs_pipeline.find_related_documents(collection_name='data_for_related_docs')
+final_data.export_persons_to_flk_web()
+sunburst.generate_sunburst_json()
+trends_chart_pipeline.create_trends_data(collection_name='data_for_trends_with_id')
+wordcloud_pipeline.preprocess_data_for_wordcloud('publication_wordcloud_data')
+wordcloud_dataformat.preprocess_WordCloud_data()
+wordcloud_pipeline_author.preprocess_data_for_wordcloud('publication_wordcloud_data_author')
+data_research_output.create_data_and_push()
+aut_net.run_aut_net()
+key_net.run_key_net()

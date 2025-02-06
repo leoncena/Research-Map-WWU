@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lib/mongodb.ts",
+    "pages/components/index/publications.jsx",
+    "pages/components/index/publications.jsx",
+    "pages/components/index/dashboard/dashboard.jsxhboard.jsx",
+    "pages/components/index/tab_search/emptyquery.jsx",
+    "pages/components/index/author.jsx",
+    "pages/components/index/util/articlesPreview.jsx"
+  ],
+  "exclude": ["node_modules"]
+}

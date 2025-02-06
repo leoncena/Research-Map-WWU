@@ -1,0 +1,50 @@
+query {
+    organisationList(first: 100, after: "") {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        list {
+            node {
+                cfAcro
+                cfCityTown
+                cfName
+                cfPostCode
+                cfUri
+                country{
+                    id
+                    cfName
+                }
+                descriptionOrgProfile
+                email
+                facebookAccount
+                fax
+                gndId
+                gridId
+                id
+                identifierC4
+                intOrExt
+                intOrExtId
+                isniId
+                linkedinAccount
+                locId
+                nameInHomeLang
+                nameShort
+                phone
+                rorId
+                status
+                streetAndNo
+                twitterAccount
+                typeOfOrga
+                viafId
+                wikidataId
+                wikipedia
+                wwuOrgaIdOld
+                xingAccount
+                youtubeAccount
+            }
+        }
+    }
+}

@@ -1,0 +1,4697 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+interface Node {
+    id: ID!
+}
+
+union DataNode = AcademicEducation | Appointment | Area | Award | Card | Country | DoctoralCourse | DoctoralStudy | Function | FunctionAndMembership | FundingSource | Habilitation | Journal | Organisation | Person | Picture | Prize | Project | Publication | Publisher | ResearchFocus | Talk | WorkExperience | cfLang
+
+type AcademicEducation {
+    node: AcademicEducationNode
+}
+
+type AcademicEducationList {
+    cursor: String
+    node: AcademicEducationNode!
+}
+
+type AcademicEducationListWrapper {
+    list: [AcademicEducationList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type AcademicEducationNode implements Node {
+    endMonth: Int
+    endYear: Int
+    id: ID!
+    identifierC4: Int
+    isPointOfTime: Boolean
+    name: String
+    startMonth: Int
+    startYear: Int
+    status: Int
+    url: String
+}
+
+type Api {
+    version: String
+}
+
+type Appointment {
+    node: AppointmentNode
+}
+
+type AppointmentList {
+    cursor: String
+    node: AppointmentNode!
+}
+
+type AppointmentListWrapper {
+    list: [AppointmentList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type AppointmentNode implements Node {
+    acceptance: String
+    acceptanceId: Int
+    id: ID!
+    identifierC4: Int
+    modifiedNameForWeb: String
+    monthOfAppo: Int
+    organisation: OrganisationNode
+    properNameofProfessorship: String
+    salaryGrade: String
+    salaryGradeId: Int
+    status: Int
+    topicOfProfessorship: String
+    typeOfAppointment: String
+    typeOfAppointmentId: Int
+    yearOfAppo: Int
+}
+
+type Area {
+    node: AreaNode
+}
+
+type AreaList {
+    cursor: String
+    node: AreaNode!
+}
+
+type AreaListWrapper {
+    list: [AreaList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type AreaNode implements Node {
+    description: String
+    id: ID!
+    identifierC4: Int
+    name: String
+    status: Int
+}
+
+type Award {
+    connections: AwardConnections
+    node: AwardNode
+}
+
+type AwardConnections {
+    prizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PrizeSortFields] = [{id: {order: asc}}]
+    ): AwardPrizesConnection
+}
+
+type AwardList {
+    cursor: String
+    node: AwardNode!
+}
+
+type AwardListWrapper {
+    list: [AwardList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type AwardNode implements Node {
+    awardingCommittee: String
+    description: String
+    id: ID!
+    identifierC4: Int
+    isAwardedByWwu: Boolean
+    name: String
+    sponsor: String
+    status: Int
+    typeOfAward: String
+    typeOfAwardId: Int
+    url: String
+    yearFirstAward: Int
+    yearLastAward: Int
+}
+
+type AwardPrizesConnection {
+    edges: [AwardPrizesEdge]!
+    pageInfo: PageInfo!
+}
+
+type AwardPrizesEdge {
+    cursor: String!
+    node: PrizeNode!
+}
+
+type Card {
+    connections: CardConnections
+    node: CardNode
+}
+
+type CardConnections {
+    doctoralStudiesHavingCardAsCandidate(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): CardDoctoralStudiesConnection
+    doctoralStudiesHavingCardAsReviewer(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): CardDoctoralStudiesConnection
+    doctoralStudiesHavingCardAsSupervisor(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): CardDoctoralStudiesConnection
+    functions(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10
+    ): CardFunctionsConnection
+    habilitationsHavingCardAsCandidate(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): CardHabilitationsConnection
+    habilitationsHavingCardAsSupervisor(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): CardHabilitationsConnection
+    organisations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [OrganisationSortFields] = [{id: {order: asc}}]
+    ): CardOrganisationsConnection
+    persons(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PersonSortFields] = [{id: {order: asc}}]
+    ): CardPersonsConnection
+    prizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PrizeSortFields] = [{id: {order: asc}}]
+    ): CardPrizesConnection
+    projectsHavingCardAsAdministrativeManager(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): CardProjectsConnection
+    projectsHavingCardAsCoi(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): CardProjectsConnection
+    projectsHavingCardAsLeader(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): CardProjectsConnection
+    projectsHavingCardAsPi(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): CardProjectsConnection
+    projectsHavingCardAsScientificStaff(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): CardProjectsConnection
+    projectsHavingCardAsSpeaker(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): CardProjectsConnection
+    projectsHavingCardAsStudentAssistant(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): CardProjectsConnection
+    projectsHavingCardAsTechnicalStaff(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): CardProjectsConnection
+    publications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): CardPublicationsConnection
+    talks(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [TalkSortFields] = [{id: {order: asc}}]
+    ): CardTalksConnection
+}
+
+type CardDoctoralStudiesConnection {
+    edges: [CardDoctoralStudiesEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardDoctoralStudiesEdge {
+    cursor: String!
+    node: DoctoralStudyNode!
+}
+
+type CardFunctionsConnection {
+    edges: [CardFunctionsEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardFunctionsEdge {
+    cursor: String!
+    node: FunctionNode!
+}
+
+type CardHabilitationsConnection {
+    edges: [CardHabilitytionsEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardHabilitytionsEdge {
+    cursor: String!
+    node: HabilitationNode!
+}
+
+type CardList {
+    cursor: String
+    node: CardNode!
+}
+
+type CardListWrapper {
+    list: [CardList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type CardNode implements Node {
+    cfEndDate: String
+    cfUri: String
+    consultationHours: String
+    email: String
+    fax: String
+    id: ID!
+    identifierC4: Int
+    individualJobDesc: String
+    jobTitle: String
+    phone: String
+    phoneLaboratory: String
+    roomNumber: String
+    roomNumberLaboratory: String
+    status: Int
+}
+
+type CardOrganisationsConnection {
+    edges: [CardOrganisationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardOrganisationsEdge {
+    cursor: String!
+    node: OrganisationNode!
+}
+
+type CardPersonsConnection {
+    edges: [CardPersonsEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardPersonsEdge {
+    cursor: String!
+    node: PersonNode!
+}
+
+type CardPrizesConnection {
+    edges: [CardPrizesEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardPrizesEdge {
+    cursor: String!
+    node: PrizeNode!
+}
+
+type CardProjectsConnection {
+    edges: [CardProjectsEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardProjectsEdge {
+    cursor: String!
+    node: ProjectNode!
+}
+
+type CardPublicationsConnection {
+    edges: [CardPublicationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardPublicationsEdge {
+    cursor: String!
+    node: PublicationNode!
+}
+
+type CardTalksConnection {
+    edges: [CardTalksEdge]!
+    pageInfo: PageInfo!
+}
+
+type CardTalksEdge {
+    cursor: String!
+    node: TalkNode!
+}
+
+type Country {
+    node: CountryNode
+}
+
+type CountryList {
+    cursor: String
+    node: CountryNode!
+}
+
+type CountryListWrapper {
+    list: [CountryList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type CountryNode implements Node {
+    cfCountryCode: String
+    cfName: String
+    countryCodeAlpa3: String
+    countryCodeNum: String
+    formalName: String
+    id: ID!
+    identifierC4: Int
+    nationality: String
+    status: Int
+}
+
+type DoctoralCourse {
+    node: DoctoralCourseNode
+}
+
+type DoctoralCourseList {
+    cursor: String
+    node: DoctoralCourseNode!
+}
+
+type DoctoralCourseListWrapper {
+    list: [DoctoralCourseList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type DoctoralCourseNode implements Node {
+    id: ID!
+    identifierC4: Int
+    name: String
+    status: Int
+}
+
+type DoctoralStudy {
+    connections: DoctoralStudyConnections
+    node: DoctoralStudyNode
+}
+
+type DoctoralStudyCardsConnection {
+    edges: [DoctoralStudyCardsEdge]!
+    pageInfo: PageInfo!
+}
+
+type DoctoralStudyCardsEdge {
+    cursor: String!
+    node: CardNode!
+}
+
+type DoctoralStudyConnections {
+    cardsHavingDoctoralStudyAsCandidate(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyCardsConnection
+    cardsHavingDoctoralStudyAsReviewer(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyCardsConnection
+    cardsHavingDoctoralStudyAsSupervisor(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyCardsConnection
+    gradOrganisations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [OrganisationSortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyOrganisationsConnection
+    prizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PrizeSortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyPrizesConnection
+    projects(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyProjectsConnection
+    publications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyPublicationsConnection
+    talks(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [TalkSortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyTalksConnection
+}
+
+type DoctoralStudyList {
+    cursor: String
+    node: DoctoralStudyNode!
+}
+
+type DoctoralStudyListWrapper {
+    list: [DoctoralStudyList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type DoctoralStudyNode implements Node {
+    awardingFaculty: String
+    awardingFacultyId: Int
+    candidateName: String
+    courseOfStudyExt: String
+    description: String
+    doctoralCourse: DoctoralCourseNode
+    doctorateDegree: String
+    doctorateDegreeExt: String
+    doctorateDegreeId: Int
+    endDate: String
+    finishedIntExt: String
+    finishedIntExtId: Int
+    id: ID!
+    identifierC4: Int
+    isWorkingTitle: Boolean
+    namesOfReviewers: String
+    startDate: String
+    status: Int
+    statusOfDocStudies: String
+    statusOfDocStudiesId: Int
+    supervisorName: String
+    title: String
+    typeOfDoctoralThesis: String
+}
+
+type DoctoralStudyOrganisationsConnection {
+    edges: [DoctoralStudyOrganisationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type DoctoralStudyOrganisationsEdge {
+    cursor: String!
+    node: OrganisationNode!
+}
+
+type DoctoralStudyPrizesConnection {
+    edges: [DoctoralStudyPrizesEdge]!
+    pageInfo: PageInfo!
+}
+
+type DoctoralStudyPrizesEdge {
+    cursor: String!
+    node: PrizeNode!
+}
+
+type DoctoralStudyProjectsConnection {
+    edges: [DoctoralStudyProjectsEdge]!
+    pageInfo: PageInfo!
+}
+
+type DoctoralStudyProjectsEdge {
+    cursor: String!
+    node: ProjectNode!
+}
+
+type DoctoralStudyPublicationsConnection {
+    edges: [DoctoralStudyPublicationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type DoctoralStudyPublicationsEdge {
+    cursor: String!
+    node: PublicationNode!
+}
+
+type DoctoralStudyTalksConnection {
+    edges: [DoctoralStudyTalksEdge]!
+    pageInfo: PageInfo!
+}
+
+type DoctoralStudyTalksEdge {
+    cursor: String!
+    node: TalkNode!
+}
+
+type Facility {
+    connections: FacilityConnections
+    node: FacilityNode
+}
+
+type FacilityConnections {
+    publications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: PublicationListSelect = {},
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): FacilityPublicationsConnection
+}
+
+type FacilityList {
+    cursor: String
+    node: FacilityNode!
+}
+
+type FacilityListWrapper {
+    list: [FacilityList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type FacilityNode implements Node {
+    cfDescr: String
+    cfName: String
+    id: ID!
+}
+
+type FacilityPublicationsConnection {
+    edges: [FacilityPublicationsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type FacilityPublicationsEdge {
+    cursor: String
+    node: PublicationNode!
+}
+
+type Function {
+    node: FunctionNode
+}
+
+type FunctionAndMembership {
+    node: FunctionAndMembershipNode
+}
+
+type FunctionAndMembershipList {
+    cursor: String
+    node: FunctionAndMembershipNode!
+}
+
+type FunctionAndMembershipListWrapper {
+    list: [FunctionAndMembershipList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type FunctionAndMembershipNode implements Node {
+    committee: String
+    description: String
+    endMonth: Int
+    endYear: Int
+    id: ID!
+    identifierC4: Int
+    isPointOfTime: Boolean
+    name: String
+    role: String
+    startMonth: Int
+    startYear: Int
+    status: Int
+    url: String
+}
+
+type FunctionList {
+    cursor: String
+    node: FunctionNode!
+}
+
+type FunctionListWrapper {
+    list: [FunctionList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type FunctionNode implements Node {
+    functionInOrga: String
+    functionInOrgaId: Int
+    id: ID!
+    identifierC4: Int
+    status: Int
+}
+
+type FundHasFundEdge {
+    node: FundingSourceNode
+    tree: FundingSourceTree
+}
+
+type FundingSource {
+    connections: FundingSourceConnections
+    node: FundingSourceNode
+}
+
+type FundingSourceConnections {
+    childFundingSources(
+        "The direction in which to walk the tree. Must be 'asc' or 'desc'.Default is 'desc'"
+        direction: String = "desc"
+    ): FundingSourceTreeWrapper!
+    projects(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): FundingSourceProjectsConnection
+}
+
+type FundingSourceList {
+    cursor: String
+    node: FundingSourceNode!
+}
+
+type FundingSourceListWrapper {
+    list: [FundingSourceList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type FundingSourceNode implements Node {
+    abbreviation: String
+    id: ID!
+    identifierC4: Int
+    name: String
+    status: Int
+    url: String
+}
+
+type FundingSourceProjectsConnection {
+    edges: [FundingSourceProjectsEdge]!
+    pageInfo: PageInfo!
+}
+
+type FundingSourceProjectsEdge {
+    cursor: String!
+    node: ProjectNode!
+}
+
+type FundingSourceTree {
+    firstChild: [FundingSourceNode]!
+    firstParent: [FundingSourceNode]!
+    level: Int!
+}
+
+type FundingSourceTreeWrapper {
+    edges: [FundHasFundEdge]!
+}
+
+type Habilitation {
+    connections: HabilitationConnections
+    node: HabilitationNode
+}
+
+type HabilitationCardsConnection {
+    edges: [HabilitationCardsEdge]!
+    pageInfo: PageInfo!
+}
+
+type HabilitationCardsEdge {
+    cursor: String!
+    node: CardNode!
+}
+
+type HabilitationConnections {
+    cardsHavingHabilitationAsCandidate(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): HabilitationCardsConnection
+    cardsHavingHabilitationAsSupervisor(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): HabilitationCardsConnection
+    gradOrganisations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [OrganisationSortFields] = [{id: {order: asc}}]
+    ): HabilitationOrganisationsConnection
+    prizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PrizeSortFields] = [{id: {order: asc}}]
+    ): HabilitationPrizesConnection
+    projects(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): HabilitationProjectsConnection
+    publications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): HabilitationPublicationsConnection
+}
+
+type HabilitationList {
+    cursor: String
+    node: HabilitationNode!
+}
+
+type HabilitationListWrapper {
+    list: [HabilitationList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type HabilitationNode implements Node {
+    awardingFaculty: String
+    awardingFacultyId: Int
+    candidateName: String
+    description: String
+    endDate: String
+    finishedIntExt: String
+    finishedIntExtId: Int
+    habilitationStatus: String
+    habilitationStatusId: Int
+    id: ID!
+    identifierC4: Int
+    isWorkingTitle: Boolean
+    startDate: String
+    status: Int
+    supervisorName: String
+    title: String
+    veniaLegendi: String
+}
+
+type HabilitationOrganisationsConnection {
+    edges: [HabilitationOrganisationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type HabilitationOrganisationsEdge {
+    cursor: String!
+    node: OrganisationNode!
+}
+
+type HabilitationPrizesConnection {
+    edges: [HabilitationPrizesEdge]!
+    pageInfo: PageInfo!
+}
+
+type HabilitationPrizesEdge {
+    cursor: String!
+    node: PrizeNode!
+}
+
+type HabilitationProjectsConnection {
+    edges: [HabilitationProjectsEdge]!
+    pageInfo: PageInfo!
+}
+
+type HabilitationProjectsEdge {
+    cursor: String!
+    node: ProjectNode!
+}
+
+type HabilitationPublicationsConnection {
+    edges: [HabilitationPublicationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type HabilitationPublicationsEdge {
+    cursor: String!
+    node: PublicationNode!
+}
+
+type Journal {
+    node: JournalNode
+}
+
+type JournalList {
+    cursor: String
+    node: JournalNode!
+}
+
+type JournalListWrapper {
+    list: [JournalList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type JournalNode implements Node {
+    abbreviation: String
+    conditions: String
+    copyright: String
+    eissn: String
+    id: ID!
+    identifierC4: Int
+    issn: String
+    issnl: String
+    name: String
+    postPrint: String
+    prePrint: String
+    publisher: String
+    roMeoColour: String
+    status: Int
+}
+
+type OrgaHasChildOrgaEdge {
+    node: OrganisationNode
+    tree: OrganisationTree
+}
+
+type Organisation {
+    connections: OrganisationConnections
+    node: OrganisationNode
+}
+
+type OrganisationCardsConnection {
+    edges: [OrganisationCardsEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationCardsEdge {
+    cursor: String!
+    node: CardNode!
+}
+
+type OrganisationConnections {
+    cards(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): OrganisationCardsConnection
+    doctoralStudies(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): OrganisationDoctoralStudiesConnection
+    doctoralStudiesHavingOrganisationAsCandidate(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): OrganisationDoctoralStudiesConnection
+    doctoralStudiesHavingOrganisationAsReviewer(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): OrganisationDoctoralStudiesConnection
+    doctoralStudiesHavingOrganisationAsSupervisor(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): OrganisationDoctoralStudiesConnection
+    habilitations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): OrganisationHabilitationsConnection
+    habilitationsHavingOrganisationAsCandidate(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): OrganisationHabilitationsConnection
+    habilitationsHavingOrganisationAsSupervisor(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): OrganisationHabilitationsConnection
+    organisations(
+        "The direction in which to walk the tree. Must be 'asc' or 'desc'.Default is 'desc'"
+        direction: String = "desc"
+    ): OrganisationTreeWrapper!
+    persons(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PersonSortFields] = [{id: {order: asc}}]
+    ): OrganisationPersonsConnection
+    prizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PrizeSortFields] = [{id: {order: asc}}]
+    ): OrganisationPrizesConnection
+    projects(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    projectsHavingOrganisationAsAdministrativeManager(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    projectsHavingOrganisationAsCoi(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    projectsHavingOrganisationAsLeader(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    projectsHavingOrganisationAsPi(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    projectsHavingOrganisationAsScientificStaff(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    projectsHavingOrganisationAsSpeaker(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    projectsHavingOrganisationAsStudentAssistant(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    projectsHavingOrganisationAsTechnicalStaff(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): OrganisationProjectsConnection
+    publications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): OrganisationPublicationsConnection
+    publicationsUsingScopeOfPerson(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): OrganisationPublicationsConnection
+    researchFocuses(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ResearchFocusSortFields] = [{id: {order: asc}}]
+    ): OrganisationResearchFocusesConnection
+    talks(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [TalkSortFields] = [{id: {order: asc}}]
+    ): OrganisationTalksConnection
+    topPrizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PrizeSortFields] = [{id: {order: asc}}]
+    ): OrganisationPrizesConnection
+    topProjects(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields]
+    ): OrganisationProjectsConnection
+    topPublications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PublicationSortFields]
+    ): OrganisationPublicationsConnection
+}
+
+type OrganisationDoctoralStudiesConnection {
+    edges: [OrganisationDoctoralStudiesEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationDoctoralStudiesEdge {
+    cursor: String!
+    node: DoctoralStudyNode!
+}
+
+type OrganisationHabilitationsConnection {
+    edges: [OrganisationHabilitationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationHabilitationsEdge {
+    cursor: String!
+    node: HabilitationNode!
+}
+
+type OrganisationList {
+    cursor: String
+    node: OrganisationNode!
+}
+
+type OrganisationListWrapper {
+    list: [OrganisationList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type OrganisationNode implements Node {
+    cfAcro: String
+    cfCityTown: String
+    cfName: String
+    cfPostCode: String
+    cfUri: String
+    country: CountryNode
+    descriptionOrgProfile: String
+    email: String
+    facebookAccount: String
+    fax: String
+    gndId: String
+    gridId: String
+    id: ID!
+    identifierC4: Int
+    intOrExt: String
+    intOrExtId: Int
+    isniId: String
+    linkedinAccount: String
+    locId: String
+    nameInHomeLang: String
+    nameShort: String
+    phone: String
+    rorId: String
+    status: Int
+    streetAndNo: String
+    twitterAccount: String
+    typeOfOrga: String
+    viafId: Int
+    wikidataId: String
+    wikipedia: String
+    wwuOrgaIdOld: String
+    xingAccount: String
+    youtubeAccount: String
+}
+
+type OrganisationPersonsConnection {
+    edges: [OrganisationPersonsEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationPersonsEdge {
+    cursor: String!
+    node: PersonNode!
+}
+
+type OrganisationPrizesConnection {
+    edges: [OrganisationPrizesEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationPrizesEdge {
+    cursor: String!
+    node: PrizeNode!
+}
+
+type OrganisationProjectsConnection {
+    edges: [OrganisationProjectsEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationProjectsEdge {
+    cursor: String!
+    node: ProjectNode!
+}
+
+type OrganisationPublicationsConnection {
+    edges: [OrganisationPublicationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationPublicationsEdge {
+    cursor: String!
+    node: PublicationNode!
+}
+
+type OrganisationResearchFocusesConnection {
+    edges: [OrganisationResearchFocusesEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationResearchFocusesEdge {
+    cursor: String!
+    node: ResearchFocusNode!
+}
+
+type OrganisationTalksConnection {
+    edges: [OrganisationTalksEdge]!
+    pageInfo: PageInfo!
+}
+
+type OrganisationTalksEdge {
+    cursor: String!
+    node: TalkNode!
+}
+
+type OrganisationTree {
+    firstChild: [OrganisationNode]!
+    firstParent: [OrganisationNode]!
+    level: Int!
+}
+
+type OrganisationTreeWrapper {
+    edges: [OrgaHasChildOrgaEdge]!
+}
+
+type PageInfo {
+    endCursor: String
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+}
+
+type Person {
+    connections: PersonConnections
+    node: PersonNode
+}
+
+type PersonAcademicEducationsConnection {
+    edges: [PersonAcademicEducationsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonAcademicEducationsEdge {
+    cursor: String
+    node: AcademicEducationNode!
+}
+
+type PersonAppointmentsConnection {
+    edges: [PersonAppointmentsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonAppointmentsEdge {
+    cursor: String
+    node: AppointmentNode!
+}
+
+type PersonCardsConnection {
+    edges: [PersonCardsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonCardsEdge {
+    cursor: String
+    node: CardNode!
+}
+
+type PersonConnections {
+    academicEducations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: AcademicEducationListSelect = {},
+        sort: [AcademicEducationSortFields] = [{id: {order: asc}}]
+    ): PersonAcademicEducationsConnection
+    appointments(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: AppointmentListSelect = {},
+        sort: [AppointmentSortFields] = [{id: {order: asc}}]
+    ): PersonAppointmentsConnection
+    cards(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: CardListSelect = {},
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): PersonCardsConnection
+    doctoralStudies(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: DoctoralStudyListSelect = {},
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): PersonDoctoralStudiesConnection
+    doctoralStudiesHavingPersonAsCandidate(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): PersonDoctoralStudiesConnection
+    doctoralStudiesHavingPersonAsReviewer(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): PersonDoctoralStudiesConnection
+    doctoralStudiesHavingPersonAsSupervisor(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): PersonDoctoralStudiesConnection
+    functionsAndMemberships(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: FunctionAndMembershipListSelect = {},
+        sort: [FunctionAndMembershipSortFields] = [{id: {order: asc}}]
+    ): PersonFunctionsAndMembershipsConnection
+    habilitations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: HabilitationListSelect = {},
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): PersonHabilitationsConnection
+    habilitationsHavingPersonAsCandidate(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): PersonHabilitationsConnection
+    habilitationsHavingPersonAsSupervisor(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): PersonHabilitationsConnection
+    organisations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: OrganisationListSelect = {},
+        sort: [OrganisationSortFields]
+    ): PersonOrganisationsConnection
+    pictures(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: PictureListSelect = {}
+    ): PersonPicturesConnection
+    prizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: PrizeListSelect = {},
+        sort: [PrizeSortFields] = [{id: {order: asc}}]
+    ): PersonPrizesConnection
+    projects(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: ProjectListSelect = {},
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): PersonProjectsConnection
+    projectsHavingPersonAsAdministrativeManager(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): PersonProjectsConnection
+    projectsHavingPersonAsCoi(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields]
+    ): PersonProjectsConnection
+    projectsHavingPersonAsLeader(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields]
+    ): PersonProjectsConnection
+    projectsHavingPersonAsPi(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields]
+    ): PersonProjectsConnection
+    projectsHavingPersonAsScientificStaff(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields]
+    ): PersonProjectsConnection
+    projectsHavingPersonAsSpeaker(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields]
+    ): PersonProjectsConnection
+    projectsHavingPersonAsStudentAssistant(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields]
+    ): PersonProjectsConnection
+    projectsHavingPersonAsTechnicalStaff(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields]
+    ): PersonProjectsConnection
+    publications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: PublicationListSelect = {},
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): PersonPublicationsConnection
+    researchFocuses(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: ResearchFocusListSelect = {},
+        sort: [ResearchFocusSortFields] = [{id: {order: asc}}]
+    ): PersonResearchFocusesConnection
+    talks(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: TalkListSelect = {},
+        sort: [TalkSortFields] = [{id: {order: asc}}]
+    ): PersonTalksConnection
+    topPrizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PrizeSortFields]
+    ): PersonPrizesConnection
+    topProjects(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): PersonProjectsConnection
+    topPublications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): PersonPublicationsConnection
+    workExperiences(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        paginationMode: PaginationMode = cursor,
+        select: WorkExperienceListSelect = {},
+        sort: [WorkExperienceSortFields] = [{id: {order: asc}}]
+    ): PersonWorkExperiencesConnection
+}
+
+type PersonDoctoralStudiesConnection {
+    edges: [PersonDoctoralStudiesEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonDoctoralStudiesEdge {
+    cursor: String
+    node: DoctoralStudyNode!
+}
+
+type PersonFunctionsAndMembershipsConnection {
+    edges: [PersonFunctionsAndMembershipsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonFunctionsAndMembershipsEdge {
+    cursor: String
+    node: FunctionAndMembershipNode!
+}
+
+type PersonHabilitationsConnection {
+    edges: [PersonHabilitationsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonHabilitationsEdge {
+    cursor: String
+    node: HabilitationNode!
+}
+
+type PersonList {
+    cursor: String
+    node: PersonNode!
+}
+
+type PersonListWrapper {
+    list: [PersonList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonNode implements Node {
+    academiaEdu: String
+    academicTitle: String
+    birthName: String
+    cfFamilyNames: String
+    cfFirstNames: String
+    familyNamePref: String
+    firstNamePref: String
+    googleScholarId: String
+    id: ID!
+    identifierC4: Int
+    linkedinAccount: String
+    nameInfix: String
+    orcid: String
+    postpositionedTitle: String
+    researcherId: String
+    researchgateAccount: String
+    salutation: String
+    salutationId: Int
+    scopusAuthorId: String
+    skypeAccount: String
+    status: Int
+    twitterAccount: String
+    xingAccount: String
+    zivUserAccount: String
+}
+
+type PersonOrganisationsConnection {
+    edges: [PersonOrganisationsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonOrganisationsEdge {
+    cursor: String
+    node: OrganisationNode!
+}
+
+type PersonPicturesConnection {
+    edges: [PersonPicturesEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonPicturesEdge {
+    cursor: String
+    node: PictureNode!
+}
+
+type PersonPrizesConnection {
+    edges: [PersonPrizesEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonPrizesEdge {
+    cursor: String
+    node: PrizeNode!
+}
+
+type PersonProjectsConnection {
+    edges: [PersonProjectsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonProjectsEdge {
+    cursor: String
+    node: ProjectNode!
+}
+
+type PersonPublicationsConnection {
+    edges: [PersonPublicationsEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonPublicationsEdge {
+    cursor: String
+    node: PublicationNode!
+}
+
+type PersonResearchFocusesConnection {
+    edges: [PersonResearchFocusesEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonResearchFocusesEdge {
+    cursor: String
+    node: ResearchFocusNode!
+}
+
+type PersonTalksConnection {
+    edges: [PersonTalksEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonTalksEdge {
+    cursor: String
+    node: TalkNode!
+}
+
+type PersonWorkExperiencesConnection {
+    edges: [PersonWorkExperiencesEdge]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PersonWorkExperiencesEdge {
+    cursor: String
+    node: WorkExperienceNode!
+}
+
+type Picture {
+    node: PictureNode
+}
+
+type PictureList {
+    cursor: String
+    node: PictureNode!
+}
+
+type PictureListWrapper {
+    list: [PictureList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PictureNode implements Node {
+    fileDescription: String
+    fileName: String
+    fileSize: Int
+    fileType: String
+    id: ID!
+    identifierC4: Int
+    status: Int
+}
+
+type Prize {
+    connections: PrizeConnections
+    node: PrizeNode
+}
+
+type PrizeAwardsConnection {
+    edges: [PrizeAwardsEdge]!
+    pageInfo: PageInfo!
+}
+
+type PrizeAwardsEdge {
+    cursor: String!
+    node: AwardNode!
+}
+
+type PrizeCardsConnection {
+    edges: [PrizeCardsEdge]!
+    pageInfo: PageInfo!
+}
+
+type PrizeCardsEdge {
+    cursor: String!
+    node: CardNode!
+}
+
+type PrizeConnections {
+    awards(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [AwardSortFields] = [{id: {order: asc}}]
+    ): PrizeAwardsConnection
+    cards(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): PrizeCardsConnection
+}
+
+type PrizeList {
+    cursor: String
+    node: PrizeNode!
+}
+
+type PrizeListWrapper {
+    list: [PrizeList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PrizeNode implements Node {
+    amountOfPrize: Int
+    award: AwardNode
+    awardee: String
+    awardingCommittee: String
+    category: String
+    comment: String
+    currency: String
+    dateOfAnnouncement: String
+    dateOfAwarding: String
+    description: String
+    endDateScholarship: String
+    id: ID!
+    identifierC4: Int
+    inputType: String
+    inputTypeId: Int
+    name: String
+    occasionOfAwardCeremony: String
+    placement: String
+    startDateScholarship: String
+    status: Int
+    typeOfAward: String
+    typeOfAwardId: Int
+    urlAwardPressClip: String
+    urlWwuPressClip: String
+    venueOfAwardCeremony: String
+    yearOfPrize: Int
+}
+
+type Project {
+    connections: ProjectConnections
+    node: ProjectNode
+}
+
+type ProjectCardsConnection {
+    edges: [ProjectCardsEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectCardsEdge {
+    cursor: String!
+    node: CardNode!
+}
+
+type ProjectConnections {
+    cardsHavingProjectAsAdministrativeManager(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): ProjectCardsConnection
+    cardsHavingProjectAsCoi(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): ProjectCardsConnection
+    cardsHavingProjectAsLeader(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): ProjectCardsConnection
+    cardsHavingProjectAsPi(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): ProjectCardsConnection
+    cardsHavingProjectAsScientificStaff(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): ProjectCardsConnection
+    cardsHavingProjectAsSpeaker(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): ProjectCardsConnection
+    cardsHavingProjectAsStudentAssistant(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): ProjectCardsConnection
+    cardsHavingProjectAsTechnicalStaff(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): ProjectCardsConnection
+    doctoralStudies(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [DoctoralStudySortFields]
+    ): ProjectDoctoralStudiesConnection
+    extOrganisations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [OrganisationSortFields] = [{id: {order: asc}}]
+    ): ProjectOrganisationsConnection
+    facilities: ProjectFacilitiesConnection
+    fundingSources(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [FundingSourceSortFields] = [{id: {order: asc}}]
+    ): ProjectFundingSourcesConnection
+    habilitations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [HabilitationSortFields]
+    ): ProjectHabilitationsConnection
+    hostOrganisations(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [OrganisationSortFields] = [{id: {order: asc}}]
+    ): ProjectOrganisationsConnection
+    persons(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PersonSortFields] = [{id: {order: asc}}]
+    ): ProjectPersonsConnection
+    pictures(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10
+    ): ProjectPicturesConnection
+    prizes(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PrizeSortFields]
+    ): ProjectPrizesConnection
+    projectsHavingProjectAsPostFundingPeriod(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): ProjectProjectsConnection
+    projectsHavingProjectAsPreFundingPeriod(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): ProjectProjectsConnection
+    projectsHavingProjectAsSubProject(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): ProjectProjectsConnection
+    projectsHavingProjectAsSuperProject(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): ProjectProjectsConnection
+    publications(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): ProjectPublicationsConnection
+    talks(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [TalkSortFields] = [{id: {order: asc}}]
+    ): ProjectTalksConnection
+}
+
+type ProjectDoctoralStudiesConnection {
+    edges: [ProjectDoctoralStudiesEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectDoctoralStudiesEdge {
+    cursor: String!
+    node: DoctoralStudyNode!
+}
+
+type ProjectFacilitiesConnection {
+    edges: [ProjectFacilitiesEdge]!
+}
+
+type ProjectFacilitiesEdge {
+    cursor: String!
+    node: FacilityNode!
+}
+
+type ProjectFundingSourcesConnection {
+    edges: [ProjectFundingSourcesEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectFundingSourcesEdge {
+    cursor: String!
+    node: FundingSourceNode!
+}
+
+type ProjectHabilitationsConnection {
+    edges: [ProjectHabilitationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectHabilitationsEdge {
+    cursor: String!
+    node: HabilitationNode!
+}
+
+type ProjectList {
+    cursor: String
+    node: ProjectNode!
+}
+
+type ProjectListWrapper {
+    list: [ProjectList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type ProjectNode implements Node {
+    cfAbstr: String
+    cfAcro: String
+    cfEndDate: String
+    cfKeyw: String
+    cfStartDate: String
+    cfTitle: String
+    cfUri: String
+    dfgGeprisId: Int
+    dfgProjectId: Int
+    fundRefNo: String
+    fundingBody: String
+    fundingPeriod: String
+    id: ID!
+    identifierC4: String
+    initialStartDate: String
+    projectStatus: String
+    projectStatusId: Int
+    status: Int
+    teaser: String
+    typeOfProject: String
+    typeOfProjectId: Int
+}
+
+type ProjectOrganisationsConnection {
+    edges: [ProjectOrganisationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectOrganisationsEdge {
+    cursor: String!
+    node: OrganisationNode!
+}
+
+type ProjectPersonsConnection {
+    edges: [ProjectPersonsEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectPersonsEdge {
+    cursor: String!
+    node: PersonNode!
+}
+
+type ProjectPicturesConnection {
+    edges: [ProjectPicturesEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectPicturesEdge {
+    cursor: String!
+    node: PictureNode!
+}
+
+type ProjectPrizesConnection {
+    edges: [ProjectPrizesEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectPrizesEdge {
+    cursor: String!
+    node: PrizeNode!
+}
+
+type ProjectProjectsConnection {
+    edges: [ProjectProjectsEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectProjectsEdge {
+    cursor: String!
+    node: ProjectNode!
+}
+
+type ProjectPublicationsConnection {
+    edges: [ProjectPublicationsEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectPublicationsEdge {
+    cursor: String!
+    node: PublicationNode!
+}
+
+type ProjectTalksConnection {
+    edges: [ProjectTalksEdge]!
+    pageInfo: PageInfo!
+}
+
+type ProjectTalksEdge {
+    cursor: String!
+    node: TalkNode!
+}
+
+type Publication {
+    connections: PublicationConnections
+    node: PublicationNode
+}
+
+type PublicationCardsConnection {
+    edges: [PublicationCardsEdge]!
+    pageInfo: PageInfo!
+}
+
+type PublicationCardsEdge {
+    cursor: String!
+    node: CardNode!
+}
+
+type PublicationConnections {
+    cards(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): PublicationCardsConnection
+}
+
+type PublicationList {
+    cursor: String
+    node: PublicationNode!
+}
+
+type PublicationListWrapper {
+    list: [PublicationList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PublicationNode implements Node {
+    articleNumber: String
+    articleNumberWwu: String
+    authorIsOrganisation: Boolean
+    bookTitle: String
+    broadcastShow: String
+    broadcastStation: String
+    cfAbstr: String
+    cfCityTown: String
+    cfEdition: String
+    cfEndPage: String
+    cfIsbn: String
+    cfIssn: String
+    cfIssue: String
+    cfLang: cfLangNode
+    cfLangOfTranslatedTitle: cfLangNode
+    cfResPublDate: String
+    cfSeries: String
+    cfStartPage: String
+    cfTitle: String
+    cfTotalPages: Int
+    cfUri: String
+    cfVol: String
+    comments: String
+    conferenceVenue: String
+    country: CountryNode
+    distributedBy: String
+    doi: String
+    editorIsOrganisation: Boolean
+    editorList: String
+    externalOrInternal: String
+    externalOrInternalId: Int
+    graduationOrga: String
+    graduationType: String
+    graduationYear: String
+    id: ID!
+    identifierC4: String
+    isPreprint: String
+    isiId: String
+    journal: JournalNode
+    journalName: String
+    keywords: String
+    nameOfConference: String
+    numberOfPages: String
+    objectOfRecension: String
+    pagesRange: String
+    peerReviewed: String
+    peerReviewedId: Int
+    publStatus: String
+    publStatusId: Int
+    publYear: Int
+    publicationType: String
+    publicationTypeId: Int
+    publisher: String
+    publisherDetails: PublisherNode
+    pubmedId: String
+    scopusId: String
+    sourceOfInfo: String
+    srcAuthors: String
+    status: Int
+    storageMedium: String
+    titleInOtherLanguage: String
+    typeOfThesis: String
+    volumeOfSeries: String
+    websiteName: String
+}
+
+type Publisher {
+    node: PublisherNode
+}
+
+type PublisherList {
+    cursor: String
+    node: PublisherNode!
+}
+
+type PublisherListWrapper {
+    list: [PublisherList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type PublisherNode implements Node {
+    alternativeNameOfPublisher: String
+    id: ID!
+    identifierC4: Int
+    name: String
+    placeOfPublisher: String
+    status: Int
+}
+
+type Query {
+    academicEducation(id: ID!, locale: LocaleParameter = de_DE): AcademicEducation
+    academicEducationList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: AcademicEducationListSelect = {},
+        sort: [AcademicEducationSortFields] = [{id: {order: asc}}]
+    ): AcademicEducationListWrapper
+    api: Api
+    appointment(id: ID!, locale: LocaleParameter = de_DE): Appointment
+    appointmentList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: AppointmentListSelect,
+        sort: [AppointmentSortFields] = [{id: {order: asc}}]
+    ): AppointmentListWrapper
+    area(id: ID!, locale: LocaleParameter = de_DE): Area
+    areaList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: AreaListSelect,
+        sort: [AreaSortFields] = [{id: {order: asc}}]
+    ): AreaListWrapper
+    award(id: ID!, locale: LocaleParameter = de_DE): Award
+    awardList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: AwardListSelect,
+        sort: [AwardSortFields] = [{id: {order: asc}}]
+    ): AwardListWrapper
+    card(id: ID!, locale: LocaleParameter = de_DE): Card
+    cardList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: CardListSelect,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): CardListWrapper
+    cfLang(id: ID!, locale: LocaleParameter = de_DE): cfLang
+    cfLangList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: cfLangListSelect,
+        sort: [cfLangSortFields] = [{id: {order: asc}}]
+    ): cfLangListWrapper
+    country(id: ID!, locale: LocaleParameter = de_DE): Country
+    countryList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: CountryListSelect,
+        sort: [CountrySortFields] = [{id: {order: asc}}]
+    ): CountryListWrapper
+    doctoralCourse(id: ID!, locale: LocaleParameter = de_DE): DoctoralCourse
+    doctoralCourseList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: DoctoralCourseListSelect,
+        sort: [DoctoralCourseSortFields] = [{id: {order: asc}}]
+    ): DoctoralCourseListWrapper
+    doctoralStudy(id: ID!, locale: LocaleParameter = de_DE): DoctoralStudy
+    doctoralStudyList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: DoctoralStudyListSelect,
+        sort: [DoctoralStudySortFields] = [{id: {order: asc}}]
+    ): DoctoralStudyListWrapper
+    facility(id: ID!, locale: LocaleParameter = de_DE): Facility
+    facilityList: FacilityListWrapper
+    function(id: ID!, locale: LocaleParameter = de_DE): Function
+    functionAndMembership(id: ID!, locale: LocaleParameter = de_DE): FunctionAndMembership
+    functionAndMembershipList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: FunctionAndMembershipListSelect,
+        sort: [FunctionAndMembershipSortFields] = [{id: {order: asc}}]
+    ): FunctionAndMembershipListWrapper
+    functionList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: FunctionListSelect
+    ): FunctionListWrapper
+    fundingSource(id: ID!, locale: LocaleParameter = de_DE): FundingSource
+    fundingSourceList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: FundingSourceListSelect,
+        sort: [FundingSourceSortFields] = [{id: {order: asc}}]
+    ): FundingSourceListWrapper
+    habilitation(id: ID!, locale: LocaleParameter = de_DE): Habilitation
+    habilitationList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: HabilitationListSelect,
+        sort: [HabilitationSortFields] = [{id: {order: asc}}]
+    ): HabilitationListWrapper
+    journal(id: ID!, locale: LocaleParameter = de_DE): Journal
+    journalList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: JournalListSelect,
+        sort: [JournalSortFields] = [{id: {order: asc}}]
+    ): JournalListWrapper
+    nodes(ids: [ID!]!, locale: LocaleParameter = de_DE): [DataNode]!
+    organisation(id: ID!, locale: LocaleParameter = de_DE): Organisation
+    organisationList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: OrganisationListSelect,
+        sort: [OrganisationSortFields] = [{id: {order: asc}}]
+    ): OrganisationListWrapper
+    person(id: ID!, idField: PersonIdFieldParameter = id, locale: LocaleParameter = de_DE): Person
+    personList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: PersonListSelect,
+        sort: [PersonSortFields] = [{id: {order: asc}}]
+    ): PersonListWrapper
+    picture(id: ID!, locale: LocaleParameter = de_DE): Picture
+    pictureList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: PictureListSelect
+    ): PictureListWrapper
+    prize(id: ID!, locale: LocaleParameter = de_DE): Prize
+    prizeList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: PrizeListSelect,
+        sort: [PrizeSortFields] = [{id: {order: asc}}]
+    ): PrizeListWrapper
+    project(id: ID!, locale: LocaleParameter = de_DE): Project
+    projectList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: ProjectListSelect,
+        sort: [ProjectSortFields] = [{id: {order: asc}}]
+    ): ProjectListWrapper
+    publication(id: ID!, locale: LocaleParameter = de_DE): Publication
+    publicationList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: PublicationListSelect,
+        sort: [PublicationSortFields] = [{id: {order: asc}}]
+    ): PublicationListWrapper
+    publisher(id: ID!, locale: LocaleParameter = de_DE): Publisher
+    publisherList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: PublisherListSelect,
+        sort: [PublisherSortFields] = [{id: {order: asc}}]
+    ): PublisherListWrapper
+    researchFocus(id: ID!, locale: LocaleParameter = de_DE): ResearchFocus
+    researchFocusList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: ResearchFocusListSelect,
+        sort: [ResearchFocusSortFields] = [{id: {order: asc}}]
+    ): ResearchFocusListWrapper
+    talk(id: ID!, locale: LocaleParameter = de_DE): Talk
+    talkList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: TalkListSelect,
+        sort: [TalkSortFields] = [{id: {order: asc}}]
+    ): TalkListWrapper
+    workExperience(id: ID!, locale: LocaleParameter = de_DE): WorkExperience
+    workExperienceList(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: StringOrInt = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        locale: LocaleParameter = de_DE,
+        paginationMode: PaginationMode = cursor,
+        select: WorkExperienceListSelect,
+        sort: [WorkExperienceSortFields] = [{id: {order: asc}}]
+    ): WorkExperienceListWrapper
+}
+
+type ResearchFocus {
+    node: ResearchFocusNode
+}
+
+type ResearchFocusList {
+    cursor: String
+    node: ResearchFocusNode!
+}
+
+type ResearchFocusListWrapper {
+    list: [ResearchFocusList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type ResearchFocusNode implements Node {
+    description: String
+    id: ID!
+    identifierC4: Int
+    name: String
+    status: Int
+}
+
+type Talk {
+    connections: TalkConnections
+    node: TalkNode
+}
+
+type TalkCardsConnection {
+    edges: [TalkCardsEdge]!
+    pageInfo: PageInfo!
+}
+
+type TalkCardsEdge {
+    cursor: String!
+    node: CardNode!
+}
+
+type TalkConnections {
+    cards(
+        "If you add a cursor here, it will only return results _after_ this cursor"
+        after: String = "",
+        "The number of results to show. Must be >= 1 and <= 100. Default = 10"
+        first: Int = 10,
+        sort: [CardSortFields] = [{id: {order: asc}}]
+    ): TalkCardsConnection
+}
+
+type TalkList {
+    cursor: String
+    node: TalkNode!
+}
+
+type TalkListWrapper {
+    list: [TalkList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type TalkNode implements Node {
+    abstract: String
+    cfLang: cfLangNode
+    dateOfTalk: String
+    doi: String
+    endDateOfEvent: String
+    id: ID!
+    identifierC4: Int
+    isInvitedTalk: Boolean
+    isKeynote: Boolean
+    keywords: String
+    nameOfEvent: String
+    organiserOfEvent: String
+    speakers: String
+    startDateOfEvent: String
+    status: Int
+    title: String
+    typeOfTalk: String
+    typeOfTalkId: Int
+    urlOfEvent: String
+    urlOfSlides: String
+    venueOfEvent: String
+}
+
+type WorkExperience {
+    node: WorkExperienceNode
+}
+
+type WorkExperienceList {
+    cursor: String
+    node: WorkExperienceNode!
+}
+
+type WorkExperienceListWrapper {
+    list: [WorkExperienceList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type WorkExperienceNode implements Node {
+    endMonth: Int
+    endYear: Int
+    id: ID!
+    identifierC4: Int
+    isPointOfTime: Boolean
+    name: String
+    startMonth: Int
+    startYear: Int
+    status: Int
+    url: String
+}
+
+type cfLang {
+    node: cfLangNode
+}
+
+type cfLangList {
+    cursor: String
+    node: cfLangNode!
+}
+
+type cfLangListWrapper {
+    list: [cfLangList]!
+    pageInfo: PageInfo
+    totalCount: Int
+}
+
+type cfLangNode implements Node {
+    cfLangCode: String
+    cfName: String
+    id: ID!
+    identifierC4: Int
+    langCode6392: String
+    status: Int
+}
+
+enum DefaultOperator {
+    and
+    or
+}
+
+enum LocaleParameter {
+    de_DE
+    en_GB
+}
+
+enum MissingOptions {
+    first
+    last
+}
+
+enum OrderOptions {
+    asc
+    desc
+}
+
+enum PaginationMode {
+    cursor
+    offset
+}
+
+enum PersonIdFieldParameter {
+    id
+    zivUserAccount
+}
+
+"A String or an Int union type"
+scalar StringOrInt
+
+input AcademicEducationListSelect {
+    filter: [AcademicEducationListSelectFilter]
+    mustNot: [AcademicEducationListSelectMustNot]
+}
+
+input AcademicEducationListSelectFilter {
+    match: AcademicEducationMatchFields
+    phrase: AcademicEducationPhraseFields
+    queryString: QueryString
+    range: AcademicEducationRangeFields
+    wildcard: AcademicEducationWildcardFields
+}
+
+input AcademicEducationListSelectMustNot {
+    match: AcademicEducationMatchFields
+    phrase: AcademicEducationPhraseFields
+    queryString: QueryString
+    range: AcademicEducationRangeFields
+    wildcard: AcademicEducationWildcardFields
+}
+
+input AcademicEducationMatchFields {
+    endMonth: Match
+    endYear: Match
+    id: Match
+    identifierC4: Match
+    isPointOfTime: Match
+    name: Match
+    startMonth: Match
+    startYear: Match
+    status: Match
+    url: Match
+}
+
+input AcademicEducationPhraseFields {
+    name: Phrase
+    url: Phrase
+}
+
+input AcademicEducationRangeFields {
+    endMonth: Range
+    endYear: Range
+    id: Range
+    identifierC4: Range
+    startMonth: Range
+    startYear: Range
+    status: Range
+}
+
+input AcademicEducationSortFields {
+    endMonth: SortField
+    endYear: SortField
+    id: SortField
+    name: SortField
+    startMonth: SortField
+    startYear: SortField
+    status: SortField
+}
+
+input AcademicEducationWildcardFields {
+    name: Wildcard
+    url: Wildcard
+}
+
+input AppointmentListSelect {
+    filter: [AppointmentListSelectFilter]
+    mustNot: [AppointmentListSelectMustNot]
+}
+
+input AppointmentListSelectFilter {
+    match: AppointmentMatchFields
+    phrase: AppointmentPhraseFields
+    queryString: QueryString
+    range: AppointmentRangeFields
+    wildcard: AppointmentWildcardFields
+}
+
+input AppointmentListSelectMustNot {
+    match: AppointmentMatchFields
+    phrase: AppointmentPhraseFields
+    queryString: QueryString
+    range: AppointmentRangeFields
+    wildcard: AppointmentWildcardFields
+}
+
+input AppointmentMatchFields {
+    acceptance: Match
+    acceptanceId: Match
+    id: Match
+    identifierC4: Match
+    modifiedNameForWeb: Match
+    monthOfAppo: Match
+    organisation: OrganisationMatchFields
+    properNameofProfessorship: Match
+    salaryGrade: Match
+    salaryGradeId: Match
+    status: Match
+    topicOfProfessorship: Match
+    typeOfAppointment: Match
+    typeOfAppointmentId: Match
+    yearOfAppo: Match
+}
+
+input AppointmentPhraseFields {
+    acceptance: Phrase
+    modifiedNameForWeb: Phrase
+    organisation: OrganisationPhraseFields
+    properNameofProfessorship: Phrase
+    salaryGrade: Phrase
+    topicOfProfessorship: Phrase
+    typeOfAppointment: Phrase
+}
+
+input AppointmentRangeFields {
+    acceptanceId: Range
+    id: Range
+    identifierC4: Range
+    monthOfAppo: Range
+    organisation: OrganisationRangeFields
+    salaryGradeId: Range
+    status: Range
+    typeOfAppointmentId: Range
+    yearOfAppo: Range
+}
+
+input AppointmentSortFields {
+    id: SortField
+    monthOfAppo: SortField
+    status: SortField
+    typeOfAppointment: SortField
+    yearOfAppo: SortField
+}
+
+input AppointmentWildcardFields {
+    acceptance: Wildcard
+    modifiedNameForWeb: Wildcard
+    organisation: OrganisationWildcardFields
+    properNameofProfessorship: Wildcard
+    salaryGrade: Wildcard
+    topicOfProfessorship: Wildcard
+    typeOfAppointment: Wildcard
+}
+
+input AreaListSelect {
+    filter: [AreaListSelectFilter]
+    mustNot: [AreaListSelectMustNot]
+}
+
+input AreaListSelectFilter {
+    match: AreaMatchFields
+    phrase: AreaPhraseFields
+    queryString: QueryString
+    range: AreaRangeFields
+    wildcard: AreaWildcardFields
+}
+
+input AreaListSelectMustNot {
+    match: AreaMatchFields
+    phrase: AreaPhraseFields
+    queryString: QueryString
+    range: AreaRangeFields
+    wildcard: AreaWildcardFields
+}
+
+input AreaMatchFields {
+    description: Match
+    id: Match
+    identifierC4: Match
+    name: Match
+    status: Match
+}
+
+input AreaPhraseFields {
+    description: Phrase
+    name: Phrase
+}
+
+input AreaRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input AreaSortFields {
+    id: SortField
+    name: SortField
+    status: SortField
+}
+
+input AreaWildcardFields {
+    description: Wildcard
+    name: Wildcard
+}
+
+input AwardListSelect {
+    filter: [AwardListSelectFilter]
+    mustNot: [AwardListSelectMustNot]
+}
+
+input AwardListSelectFilter {
+    match: AwardMatchFields
+    phrase: AwardPhraseFields
+    queryString: QueryString
+    range: AwardRangeFields
+    wildcard: AwardWildcardFields
+}
+
+input AwardListSelectMustNot {
+    match: AwardMatchFields
+    phrase: AwardPhraseFields
+    queryString: QueryString
+    range: AwardRangeFields
+    wildcard: AwardWildcardFields
+}
+
+input AwardMatchFields {
+    awardingCommittee: Match
+    description: Match
+    id: Match
+    identifierC4: Match
+    isAwardedByWwu: Match
+    name: Match
+    sponsor: Match
+    status: Match
+    typeOfAward: Match
+    typeOfAwardId: Match
+    url: Match
+    yearFirstAward: Match
+    yearLastAward: Match
+}
+
+input AwardPhraseFields {
+    awardingCommittee: Phrase
+    description: Phrase
+    name: Phrase
+    sponsor: Phrase
+    typeOfAward: Phrase
+    url: Phrase
+}
+
+input AwardRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+    typeOfAwardId: Range
+    yearFirstAward: Range
+    yearLastAward: Range
+}
+
+input AwardSortFields {
+    id: SortField
+    name: SortField
+    status: SortField
+    yearFirstAward: SortField
+    yearLastAward: SortField
+}
+
+input AwardWildcardFields {
+    awardingCommittee: Wildcard
+    description: Wildcard
+    name: Wildcard
+    sponsor: Wildcard
+    typeOfAward: Wildcard
+    url: Wildcard
+}
+
+input CardListSelect {
+    filter: [CardListSelectFilter]
+    mustNot: [CardListSelectMustNot]
+}
+
+input CardListSelectFilter {
+    match: CardMatchFields
+    phrase: CardPhraseFields
+    queryString: QueryString
+    range: CardRangeFields
+    wildcard: CardWildcardFields
+}
+
+input CardListSelectMustNot {
+    match: CardMatchFields
+    phrase: CardPhraseFields
+    queryString: QueryString
+    range: CardRangeFields
+    wildcard: CardWildcardFields
+}
+
+input CardMatchFields {
+    cfEndDate: Match
+    cfUri: Match
+    consultationHours: Match
+    email: Match
+    fax: Match
+    id: Match
+    identifierC4: Match
+    individualJobDesc: Match
+    jobTitle: Match
+    phone: Match
+    phoneLaboratory: Match
+    roomNumber: Match
+    roomNumberLaboratory: Match
+    status: Match
+}
+
+input CardPhraseFields {
+    cfUri: Phrase
+    consultationHours: Phrase
+    email: Phrase
+    fax: Phrase
+    individualJobDesc: Phrase
+    jobTitle: Phrase
+    phone: Phrase
+    phoneLaboratory: Phrase
+    roomNumber: Phrase
+    roomNumberLaboratory: Phrase
+}
+
+input CardRangeFields {
+    cfEndDate: Range
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input CardSortFields {
+    id: SortField
+    status: SortField
+}
+
+input CardWildcardFields {
+    cfUri: Wildcard
+    consultationHours: Wildcard
+    email: Wildcard
+    fax: Wildcard
+    individualJobDesc: Wildcard
+    jobTitle: Wildcard
+    phone: Wildcard
+    phoneLaboratory: Wildcard
+    roomNumber: Wildcard
+    roomNumberLaboratory: Wildcard
+}
+
+input CountryListSelect {
+    filter: [CountryListSelectFilter]
+    mustNot: [CountryListSelectMustNot]
+}
+
+input CountryListSelectFilter {
+    match: CountryMatchFields
+    phrase: CountryPhraseFields
+    queryString: QueryString
+    range: CountryRangeFields
+    wildcard: CountryWildcardFields
+}
+
+input CountryListSelectMustNot {
+    match: CountryMatchFields
+    phrase: CountryPhraseFields
+    queryString: QueryString
+    range: CountryRangeFields
+    wildcard: CountryWildcardFields
+}
+
+input CountryMatchFields {
+    cfCountryCode: Match
+    cfName: Match
+    countryCodeAlpa3: Match
+    countryCodeNum: Match
+    formalName: Match
+    id: Match
+    identifierC4: Match
+    nationality: Match
+    status: Match
+}
+
+input CountryPhraseFields {
+    cfCountryCode: Phrase
+    cfName: Phrase
+    countryCodeAlpa3: Phrase
+    countryCodeNum: Phrase
+    formalName: Phrase
+    nationality: Phrase
+}
+
+input CountryRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input CountrySortFields {
+    cfName: SortField
+    id: SortField
+    status: SortField
+}
+
+input CountryWildcardFields {
+    cfCountryCode: Wildcard
+    cfName: Wildcard
+    countryCodeAlpa3: Wildcard
+    countryCodeNum: Wildcard
+    formalName: Wildcard
+    nationality: Wildcard
+}
+
+input DoctoralCourseListSelect {
+    filter: [DoctoralCourseListSelectFilter]
+    mustNot: [DoctoralCourseListSelectMustNot]
+}
+
+input DoctoralCourseListSelectFilter {
+    match: DoctoralCourseMatchFields
+    phrase: DoctoralCoursePhraseFields
+    queryString: QueryString
+    range: DoctoralCourseRangeFields
+    wildcard: DoctoralCourseWildcardFields
+}
+
+input DoctoralCourseListSelectMustNot {
+    match: DoctoralCourseMatchFields
+    phrase: DoctoralCoursePhraseFields
+    queryString: QueryString
+    range: DoctoralCourseRangeFields
+    wildcard: DoctoralCourseWildcardFields
+}
+
+input DoctoralCourseMatchFields {
+    id: Match
+    identifierC4: Match
+    name: Match
+    status: Match
+}
+
+input DoctoralCoursePhraseFields {
+    name: Phrase
+}
+
+input DoctoralCourseRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input DoctoralCourseSortFields {
+    id: SortField
+    name: SortField
+    status: SortField
+}
+
+input DoctoralCourseWildcardFields {
+    name: Wildcard
+}
+
+input DoctoralStudyListSelect {
+    filter: [DoctoralStudyListSelectFilter]
+    mustNot: [DoctoralStudyListSelectMustNot]
+}
+
+input DoctoralStudyListSelectFilter {
+    match: DoctoralStudyMatchFields
+    phrase: DoctoralStudyPhraseFields
+    queryString: QueryString
+    range: DoctoralStudyRangeFields
+    wildcard: DoctoralStudyWildcardFields
+}
+
+input DoctoralStudyListSelectMustNot {
+    match: DoctoralStudyMatchFields
+    phrase: DoctoralStudyPhraseFields
+    queryString: QueryString
+    range: DoctoralStudyRangeFields
+    wildcard: DoctoralStudyWildcardFields
+}
+
+input DoctoralStudyMatchFields {
+    awardingFaculty: Match
+    awardingFacultyId: Match
+    candidateName: Match
+    courseOfStudyExt: Match
+    description: Match
+    doctoralCourse: DoctoralCourseMatchFields
+    doctorateDegree: Match
+    doctorateDegreeExt: Match
+    endDate: Match
+    finishedIntExt: Match
+    finishedIntExtId: Match
+    id: Match
+    identifierC4: Match
+    isWorkingTitle: Match
+    namesOfReviewers: Match
+    startDate: Match
+    status: Match
+    statusOfDocStudies: Match
+    statusOfDocStudiesId: Match
+    supervisorName: Match
+    title: Match
+    typeOfDoctoralThesis: Match
+}
+
+input DoctoralStudyPhraseFields {
+    awardingFaculty: Phrase
+    candidateName: Phrase
+    courseOfStudyExt: Phrase
+    description: Phrase
+    doctoralCourse: DoctoralCoursePhraseFields
+    doctorateDegree: Phrase
+    doctorateDegreeExt: Phrase
+    finishedIntExt: Phrase
+    namesOfReviewers: Phrase
+    statusOfDocStudies: Phrase
+    supervisorName: Phrase
+    typeOfDoctoralThesis: Phrase
+}
+
+input DoctoralStudyRangeFields {
+    awardingFacultyId: Range
+    doctoralCourse: DoctoralCourseRangeFields
+    doctorateDegreeId: Range
+    endDate: Range
+    finishedIntExtId: Range
+    id: Range
+    identifierC4: Range
+    startDate: Range
+    status: Range
+    statusOfDocStudiesId: Range
+}
+
+input DoctoralStudySortFields {
+    endDate: SortField
+    id: SortField
+    startDate: SortField
+    status: SortField
+}
+
+input DoctoralStudyWildcardFields {
+    awardingFaculty: Wildcard
+    candidateName: Wildcard
+    courseOfStudyExt: Wildcard
+    description: Wildcard
+    doctoralCourse: DoctoralCourseWildcardFields
+    doctorateDegree: Wildcard
+    doctorateDegreeExt: Wildcard
+    finishedIntExt: Wildcard
+    namesOfReviewers: Wildcard
+    statusOfDocStudies: Wildcard
+    supervisorName: Wildcard
+    typeOfDoctoralThesis: Wildcard
+}
+
+input FacilityListSelect {
+    filter: [FacilityListSelectFilter]
+    mustNot: [FacilityListSelectMustNot]
+}
+
+input FacilityListSelectFilter {
+    match: FacilityMatchFields
+    range: FacilityRangeFields
+}
+
+input FacilityListSelectMustNot {
+    match: FacilityMatchFields
+    range: FacilityRangeFields
+}
+
+input FacilityMatchFields {
+    cfDescr: Match
+    cfName: Match
+    id: Match
+}
+
+input FacilityRangeFields {
+    id: Range
+}
+
+input FunctionAndMembershipListSelect {
+    filter: [FunctionAndMembershipListSelectFilter]
+    mustNot: [FunctionAndMembershipListSelectMustNot]
+}
+
+input FunctionAndMembershipListSelectFilter {
+    match: FunctionAndMembershipMatchFields
+    phrase: FunctionAndMembershipPhraseFields
+    queryString: QueryString
+    range: FunctionAndMembershipRangeFields
+    wildcard: FunctionAndMembershipWildcardFields
+}
+
+input FunctionAndMembershipListSelectMustNot {
+    match: FunctionAndMembershipMatchFields
+    phrase: FunctionAndMembershipPhraseFields
+    queryString: QueryString
+    range: FunctionAndMembershipRangeFields
+    wildcard: FunctionAndMembershipWildcardFields
+}
+
+input FunctionAndMembershipMatchFields {
+    committee: Match
+    description: Match
+    endMonth: Match
+    endYear: Match
+    id: Match
+    identifierC4: Match
+    isPointOfTime: Match
+    name: Match
+    role: Match
+    startMonth: Match
+    startYear: Match
+    status: Match
+    url: Match
+}
+
+input FunctionAndMembershipPhraseFields {
+    committee: Phrase
+    description: Phrase
+    name: Phrase
+    role: Phrase
+    url: Phrase
+}
+
+input FunctionAndMembershipRangeFields {
+    endMonth: Range
+    endYear: Range
+    id: Range
+    identifierC4: Range
+    startMonth: Range
+    startYear: Range
+    status: Range
+}
+
+input FunctionAndMembershipSortFields {
+    endMonth: SortField
+    endYear: SortField
+    id: SortField
+    name: SortField
+    startMonth: SortField
+    startYear: SortField
+    status: SortField
+}
+
+input FunctionAndMembershipWildcardFields {
+    committee: Wildcard
+    description: Wildcard
+    name: Wildcard
+    role: Wildcard
+    url: Wildcard
+}
+
+input FunctionListSelect {
+    filter: [FunctionListSelectFilter]
+    mustNot: [FunctionListSelectMustNot]
+}
+
+input FunctionListSelectFilter {
+    match: FunctionMatchFields
+    phrase: FunctionPhraseFields
+    queryString: QueryString
+    range: FunctionRangeFields
+    wildcard: FunctionWildcardFields
+}
+
+input FunctionListSelectMustNot {
+    match: FunctionMatchFields
+    phrase: FunctionPhraseFields
+    queryString: QueryString
+    range: FunctionRangeFields
+    wildcard: FunctionWildcardFields
+}
+
+input FunctionMatchFields {
+    functionInOrga: Match
+    id: Match
+    identifierC4: Match
+    status: Match
+}
+
+input FunctionPhraseFields {
+    functionInOrga: Phrase
+}
+
+input FunctionRangeFields {
+    functionInOrgaId: Range
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input FunctionWildcardFields {
+    functionInOrga: Wildcard
+}
+
+input FundingSourceListSelect {
+    filter: [FundingSourceListSelectFilter]
+    mustNot: [FundingSourceListSelectMustNot]
+}
+
+input FundingSourceListSelectFilter {
+    match: FundingSourceMatchFields
+    phrase: FundingSourcePhraseFields
+    queryString: QueryString
+    range: FundingSourceRangeFields
+    wildcard: FundingSourceWildcardFields
+}
+
+input FundingSourceListSelectMustNot {
+    match: FundingSourceMatchFields
+    phrase: FundingSourcePhraseFields
+    queryString: QueryString
+    range: FundingSourceRangeFields
+    wildcard: FundingSourceWildcardFields
+}
+
+input FundingSourceMatchFields {
+    abbreviation: Match
+    id: Match
+    identifierC4: Match
+    name: Match
+    status: Match
+    url: Match
+}
+
+input FundingSourcePhraseFields {
+    abbreviation: Phrase
+    name: Phrase
+    url: Phrase
+}
+
+input FundingSourceRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input FundingSourceSortFields {
+    id: SortField
+    name: SortField
+    status: SortField
+}
+
+input FundingSourceWildcardFields {
+    abbreviation: Wildcard
+    name: Wildcard
+    url: Wildcard
+}
+
+input HabilitationListSelect {
+    filter: [HabilitationListSelectFilter]
+    mustNot: [HabilitationListSelectMustNot]
+}
+
+input HabilitationListSelectFilter {
+    match: HabilitationMatchFields
+    phrase: HabilitationPhraseFields
+    queryString: QueryString
+    range: HabilitationRangeFields
+    wildcard: HabilitationWildcardFields
+}
+
+input HabilitationListSelectMustNot {
+    match: HabilitationMatchFields
+    phrase: HabilitationPhraseFields
+    queryString: QueryString
+    range: FundingSourceRangeFields
+    wildcard: HabilitationWildcardFields
+}
+
+input HabilitationMatchFields {
+    awardingFaculty: Match
+    awardingFacultyId: Match
+    candidateName: Match
+    description: Match
+    endDate: Match
+    finishedIntExt: Match
+    finishedIntExtId: Match
+    habilitationStatus: Match
+    habilitationStatusId: Match
+    id: Match
+    identifierC4: Match
+    isWorkingTitle: Match
+    startDate: Match
+    status: Match
+    supervisorName: Match
+    title: Match
+    veniaLegendi: Match
+}
+
+input HabilitationPhraseFields {
+    awardingFaculty: Phrase
+    candidateName: Phrase
+    description: Phrase
+    finishedIntExt: Phrase
+    habilitationStatus: Phrase
+    supervisorName: Phrase
+    title: Phrase
+    veniaLegendi: Phrase
+}
+
+input HabilitationRangeFields {
+    awardingFacultyId: Range
+    endDate: Range
+    finishedIntExtId: Range
+    habilitationStatusId: Range
+    id: Range
+    identifierC4: Range
+    startDate: Range
+    status: Range
+}
+
+input HabilitationSortFields {
+    endDate: SortField
+    id: SortField
+    startDate: SortField
+    status: SortField
+    title: SortField
+}
+
+input HabilitationWildcardFields {
+    awardingFaculty: Wildcard
+    candidateName: Wildcard
+    description: Wildcard
+    finishedIntExt: Wildcard
+    habilitationStatus: Wildcard
+    supervisorName: Wildcard
+    title: Wildcard
+    veniaLegendi: Wildcard
+}
+
+input JournalListSelect {
+    filter: [JournalListSelectFilter]
+    mustNot: [JournalListSelectMustNot]
+}
+
+input JournalListSelectFilter {
+    match: JournalMatchFields
+    phrase: JournalPhraseFields
+    queryString: QueryString
+    range: JournalRangeFields
+    wildcard: JournalWildcardFields
+}
+
+input JournalListSelectMustNot {
+    match: JournalMatchFields
+    phrase: JournalPhraseFields
+    queryString: QueryString
+    range: JournalRangeFields
+    wildcard: JournalWildcardFields
+}
+
+input JournalMatchFields {
+    abbreviation: Match
+    conditions: Match
+    copyright: Match
+    eissn: Match
+    id: Match
+    identifierC4: Match
+    issn: Match
+    issnl: Match
+    name: Match
+    postPrint: Match
+    prePrint: Match
+    publisher: Match
+    roMeoColour: Match
+    status: Match
+}
+
+input JournalPhraseFields {
+    abbreviation: Phrase
+    conditions: Phrase
+    copyright: Phrase
+    eissn: Phrase
+    issn: Phrase
+    issnl: Phrase
+    name: Phrase
+    postPrint: Phrase
+    prePrint: Phrase
+    publisher: Phrase
+    roMeoColour: Phrase
+}
+
+input JournalRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input JournalSortFields {
+    id: SortField
+    name: SortField
+    status: SortField
+}
+
+input JournalWildcardFields {
+    abbreviation: Wildcard
+    conditions: Wildcard
+    copyright: Wildcard
+    eissn: Wildcard
+    issn: Wildcard
+    issnl: Wildcard
+    name: Wildcard
+    postPrint: Wildcard
+    prePrint: Wildcard
+    publisher: Wildcard
+    roMeoColour: Wildcard
+}
+
+input Match {
+    operator: String
+    query: String!
+}
+
+input OrganisationListSelect {
+    filter: [OrganisationListSelectFilter]
+    mustNot: [OrganisationListSelectMustNot]
+}
+
+input OrganisationListSelectFilter {
+    match: OrganisationMatchFields
+    phrase: OrganisationPhraseFields
+    queryString: QueryString
+    range: OrganisationRangeFields
+    wildcard: OrganisationWildcardFields
+}
+
+input OrganisationListSelectMustNot {
+    match: CardMatchFields
+    phrase: OrganisationPhraseFields
+    queryString: QueryString
+    range: CardRangeFields
+    wildcard: OrganisationWildcardFields
+}
+
+input OrganisationMatchFields {
+    cfAcro: Match
+    cfCityTown: Match
+    cfName: Match
+    cfPostCode: Match
+    cfUri: Match
+    country: CountryMatchFields
+    descriptionOrgProfile: Match
+    email: Match
+    facebookAccount: Match
+    fax: Match
+    gndId: Match
+    gridId: Match
+    id: Match
+    identifierC4: Match
+    intOrExt: Match
+    intOrExtId: Match
+    isniId: Match
+    linkedinAccount: Match
+    locId: Match
+    nameInHomeLang: Match
+    nameShort: Match
+    phone: Match
+    rorId: Match
+    status: Match
+    streetAndNo: Match
+    twitterAccount: Match
+    typeOfOrga: Match
+    viafId: Match
+    wikidataId: Match
+    wikipedia: Match
+    wwuOrgaIdOld: Match
+    xingAccount: Match
+    youtubeAccount: Match
+}
+
+input OrganisationPhraseFields {
+    cfAcro: Phrase
+    cfCityTown: Phrase
+    cfName: Phrase
+    cfPostCode: Phrase
+    cfUri: Phrase
+    country: CountryPhraseFields
+    descriptionOrgProfile: Phrase
+    email: Phrase
+    facebookAccount: Phrase
+    fax: Phrase
+    gndId: Phrase
+    gridId: Phrase
+    intOrExt: Phrase
+    isniId: Phrase
+    linkedinAccount: Phrase
+    locId: Phrase
+    nameInHomeLang: Phrase
+    nameShort: Phrase
+    phone: Phrase
+    rorId: Phrase
+    streetAndNo: Phrase
+    twitterAccount: Phrase
+    typeOfOrga: Phrase
+    wikidataId: Phrase
+    wikipedia: Phrase
+    wwuOrgaIdOld: Phrase
+    xingAccount: Phrase
+    youtubeAccount: Phrase
+}
+
+input OrganisationRangeFields {
+    country: CountryRangeFields
+    id: Range
+    identifierC4: Range
+    intOrExtId: Range
+    status: Range
+    viafId: Range
+}
+
+input OrganisationSortFields {
+    cfName: SortField
+    id: SortField
+    status: SortField
+}
+
+input OrganisationWildcardFields {
+    cfAcro: Wildcard
+    cfCityTown: Wildcard
+    cfName: Wildcard
+    cfPostCode: Wildcard
+    cfUri: Wildcard
+    country: CountryWildcardFields
+    descriptionOrgProfile: Wildcard
+    email: Wildcard
+    facebookAccount: Wildcard
+    fax: Wildcard
+    gndId: Wildcard
+    gridId: Wildcard
+    intOrExt: Wildcard
+    isniId: Wildcard
+    linkedinAccount: Wildcard
+    locId: Wildcard
+    nameInHomeLang: Wildcard
+    nameShort: Wildcard
+    phone: Wildcard
+    rorId: Wildcard
+    streetAndNo: Wildcard
+    twitterAccount: Wildcard
+    typeOfOrga: Wildcard
+    wikidataId: Wildcard
+    wikipedia: Wildcard
+    wwuOrgaIdOld: Wildcard
+    xingAccount: Wildcard
+    youtubeAccount: Wildcard
+}
+
+input PersonListSelect {
+    filter: [PersonListSelectFilter]
+    mustNot: [PersonListSelectMustNot]
+}
+
+input PersonListSelectFilter {
+    match: PersonMatchFields
+    phrase: PersonPhraseFields
+    queryString: QueryString
+    range: PersonRangeFields
+    wildcard: PersonWildcardFields
+}
+
+input PersonListSelectMustNot {
+    match: PersonMatchFields
+    phrase: PersonPhraseFields
+    queryString: QueryString
+    range: PersonRangeFields
+    wildcard: PersonWildcardFields
+}
+
+input PersonMatchFields {
+    academiaEdu: Match
+    academicTitle: Match
+    birthName: Match
+    cfFamilyNames: Match
+    cfFirstNames: Match
+    familyNamePref: Match
+    firstNamePref: Match
+    googleScholarId: Match
+    id: Match
+    identifierC4: Match
+    linkedinAccount: Match
+    nameInfix: Match
+    orcid: Match
+    postpositionedTitle: Match
+    researcherId: Match
+    researchgateAccount: Match
+    salutation: Match
+    scopusAuthorId: Match
+    skypeAccount: Match
+    status: Match
+    twitterAccount: Match
+    xingAccount: Match
+    zivUserAccount: Match
+}
+
+input PersonPhraseFields {
+    academiaEdu: Phrase
+    academicTitle: Phrase
+    birthName: Phrase
+    cfFamilyNames: Phrase
+    cfFirstNames: Phrase
+    familyNamePref: Phrase
+    firstNamePref: Phrase
+    googleScholarId: Phrase
+    linkedinAccount: Phrase
+    nameInfix: Phrase
+    orcid: Phrase
+    postpositionedTitle: Phrase
+    researcherId: Phrase
+    researchgateAccount: Phrase
+    salutation: Phrase
+    scopusAuthorId: Phrase
+    skypeAccount: Phrase
+    twitterAccount: Phrase
+    xingAccount: Phrase
+    zivUserAccount: Phrase
+}
+
+input PersonRangeFields {
+    id: Range
+    identifierC4: Range
+    salutationId: Range
+    status: Range
+}
+
+input PersonSortFields {
+    cfFamilyNames: SortField
+    id: SortField
+    status: SortField
+}
+
+input PersonWildcardFields {
+    academiaEdu: Wildcard
+    academicTitle: Wildcard
+    birthName: Wildcard
+    cfFamilyNames: Wildcard
+    cfFirstNames: Wildcard
+    familyNamePref: Wildcard
+    firstNamePref: Wildcard
+    googleScholarId: Wildcard
+    linkedinAccount: Wildcard
+    nameInfix: Wildcard
+    orcid: Wildcard
+    postpositionedTitle: Wildcard
+    researcherId: Wildcard
+    researchgateAccount: Wildcard
+    salutation: Wildcard
+    scopusAuthorId: Wildcard
+    skypeAccount: Wildcard
+    twitterAccount: Wildcard
+    xingAccount: Wildcard
+    zivUserAccount: Wildcard
+}
+
+input Phrase {
+    query: String!
+}
+
+input PictureListSelect {
+    filter: [PictureListSelectFilter]
+    mustNot: [PictureListSelectMustNot]
+}
+
+input PictureListSelectFilter {
+    match: PictureMatchFields
+    phrase: PicturePhraseFields
+    queryString: QueryString
+    range: PictureRangeFields
+    wildcard: PictureWildcardFields
+}
+
+input PictureListSelectMustNot {
+    match: PictureMatchFields
+    phrase: PicturePhraseFields
+    queryString: QueryString
+    range: PictureRangeFields
+    wildcard: PictureWildcardFields
+}
+
+input PictureMatchFields {
+    fileDescription: Match
+    fileName: Match
+    fileSize: Match
+    fileType: Match
+    id: Match
+    identifierC4: Match
+    status: Match
+}
+
+input PicturePhraseFields {
+    fileDescription: Phrase
+    fileName: Phrase
+    fileType: Phrase
+}
+
+input PictureRangeFields {
+    fileSize: Range
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input PictureWildcardFields {
+    fileDescription: Wildcard
+    fileName: Wildcard
+    fileType: Wildcard
+}
+
+input PrizeListSelect {
+    filter: [PrizeListSelectFilter]
+    mustNot: [PrizeListSelectMustNot]
+}
+
+input PrizeListSelectFilter {
+    match: PrizeMatchFields
+    phrase: PrizePhraseFields
+    queryString: QueryString
+    range: PrizeRangeFields
+    wildcard: PrizeWildcardFields
+}
+
+input PrizeListSelectMustNot {
+    match: PrizeMatchFields
+    phrase: PrizePhraseFields
+    queryString: QueryString
+    range: PrizeRangeFields
+    wildcard: PrizeWildcardFields
+}
+
+input PrizeMatchFields {
+    amountOfPrize: Match
+    award: AwardMatchFields
+    awardee: Match
+    awardingCommittee: Match
+    category: Match
+    comment: Match
+    currency: Match
+    dateOfAnnouncement: Match
+    dateOfAwarding: Match
+    description: Match
+    endDateScholarship: Match
+    id: Match
+    identifierC4: Match
+    inputType: Match
+    inputTypeId: Match
+    name: Match
+    occasionOfAwardCeremony: Match
+    placement: Match
+    startDateScholarship: Match
+    status: Match
+    typeOfAward: Match
+    typeOfAwardId: Match
+    urlAwardPressClip: Match
+    urlWwuPressClip: Match
+    venueOfAwardCeremony: Match
+    yearOfPrize: Match
+}
+
+input PrizePhraseFields {
+    award: AwardPhraseFields
+    awardee: Phrase
+    awardingCommittee: Phrase
+    category: Phrase
+    comment: Phrase
+    currency: Phrase
+    description: Phrase
+    inputType: Phrase
+    name: Phrase
+    occasionOfAwardCeremony: Phrase
+    placement: Phrase
+    typeOfAward: Phrase
+    urlAwardPressClip: Phrase
+    urlWwuPressClip: Phrase
+    venueOfAwardCeremony: Phrase
+}
+
+input PrizeRangeFields {
+    award: AwardRangeFields
+    dateOfAnnouncement: AwardRangeFields
+    dateOfAwarding: AwardRangeFields
+    endDateScholarship: AwardRangeFields
+    id: Range
+    identifierC4: Range
+    inputTypeId: Range
+    startDateScholarship: AwardRangeFields
+    status: Range
+    typeOfAwardId: Range
+    yearOfPrize: Range
+}
+
+input PrizeSortFields {
+    amountOfPrize: SortField
+    award: AwardSortFields
+    dateOfAnnouncement: SortField
+    dateOfAwarding: SortField
+    endDateScholarship: SortField
+    id: SortField
+    name: SortField
+    startDateScholarship: SortField
+    status: SortField
+    yearOfPrize: SortField
+}
+
+input PrizeWildcardFields {
+    award: AwardWildcardFields
+    awardee: Wildcard
+    awardingCommittee: Wildcard
+    category: Wildcard
+    comment: Wildcard
+    currency: Wildcard
+    description: Wildcard
+    inputType: Wildcard
+    name: Wildcard
+    occasionOfAwardCeremony: Wildcard
+    placement: Wildcard
+    typeOfAward: Wildcard
+    urlAwardPressClip: Wildcard
+    urlWwuPressClip: Wildcard
+    venueOfAwardCeremony: Wildcard
+}
+
+input ProjectListSelect {
+    filter: [ProjectListSelectFilter]
+    mustNot: [ProjectListSelectMustNot]
+}
+
+input ProjectListSelectFilter {
+    match: ProjectMatchFields
+    phrase: ProjectPhraseFields
+    queryString: QueryString
+    range: ProjectRangeFields
+    wildcard: ProjectWildcardFields
+}
+
+input ProjectListSelectMustNot {
+    match: ProjectMatchFields
+    phrase: ProjectPhraseFields
+    queryString: QueryString
+    range: ProjectRangeFields
+    wildcard: ProjectWildcardFields
+}
+
+input ProjectMatchFields {
+    cfAbstr: Match
+    cfAcro: Match
+    cfEndDate: Match
+    cfKeyw: Match
+    cfStartDate: Match
+    cfTitle: Match
+    cfUri: Match
+    dfgGeprisId: Match
+    dfgProjectId: Match
+    fundRefNo: Match
+    fundingBody: Match
+    fundingPeriod: Match
+    id: Match
+    identifierC4: Match
+    initialStartDate: Match
+    projectStatus: Match
+    projectStatusId: Match
+    status: Match
+    teaser: Match
+    typeOfProject: Match
+    typeOfProjectId: Match
+}
+
+input ProjectPhraseFields {
+    cfAbstr: Phrase
+    cfAcro: Phrase
+    cfKeyw: Phrase
+    cfTitle: Phrase
+    cfUri: Phrase
+    fundRefNo: Phrase
+    fundingBody: Phrase
+    fundingPeriod: Phrase
+    projectStatus: Phrase
+    teaser: Phrase
+    typeOfProject: Phrase
+}
+
+input ProjectRangeFields {
+    cfEndDate: Range
+    cfStartDate: Range
+    dfgGeprisId: Range
+    dfgProjectId: Range
+    id: Range
+    identifierC4: Range
+    initialStartDate: Range
+    projectStatusId: Range
+    status: Range
+    typeOfProjectId: Range
+}
+
+input ProjectSortFields {
+    cfEndDate: SortField
+    cfStartDate: SortField
+    cfTitle: SortField
+    id: SortField
+    initialStartDate: SortField
+    status: SortField
+}
+
+input ProjectWildcardFields {
+    cfAbstr: Wildcard
+    cfAcro: Wildcard
+    cfKeyw: Wildcard
+    cfTitle: Wildcard
+    cfUri: Wildcard
+    fundRefNo: Wildcard
+    fundingBody: Wildcard
+    fundingPeriod: Wildcard
+    projectStatus: Wildcard
+    teaser: Wildcard
+    typeOfProject: Wildcard
+}
+
+input PublicationListSelect {
+    filter: [PublicationListSelectFilter]
+    mustNot: [PublicationListSelectMustNot]
+}
+
+input PublicationListSelectFilter {
+    match: PublicationMatchFields
+    phrase: PublicationPhraseFields
+    queryString: QueryString
+    range: PublicationRangeFields
+    wildcard: PublicationWildcardFields
+}
+
+input PublicationListSelectMustNot {
+    match: PublicationMatchFields
+    phrase: PublicationPhraseFields
+    queryString: QueryString
+    range: PublicationRangeFields
+    wildcard: PublicationWildcardFields
+}
+
+input PublicationMatchFields {
+    articleNumber: Match
+    articleNumberWwu: Match
+    authorIsOrganisation: Match
+    bookTitle: Match
+    broadcastShow: Match
+    broadcastStation: Match
+    cfAbstr: Match
+    cfCityTown: Match
+    cfEdition: Match
+    cfEndPage: Match
+    cfIsbn: Match
+    cfIssn: Match
+    cfIssue: Match
+    cfLang: cfLangMatchFields
+    cfLangOfTranslatedTitle: cfLangMatchFields
+    cfResPublDate: Match
+    cfSeries: Match
+    cfStartPage: Match
+    cfTitle: Match
+    cfTotalPages: Match
+    cfUri: Match
+    cfVol: Match
+    comments: Match
+    conferenceVenue: Match
+    country: CountryMatchFields
+    distributedBy: Match
+    doi: Match
+    editorIsOrganisation: Match
+    editorList: Match
+    externalOrInternal: Match
+    externalOrInternalId: Match
+    graduationOrga: Match
+    graduationType: Match
+    graduationYear: Match
+    id: Match
+    identifierC4: Match
+    isPreprint: Match
+    isiId: Match
+    journal: JournalMatchFields
+    journalName: Match
+    keywords: Match
+    nameOfConference: Match
+    numberOfPages: Match
+    objectOfRecension: Match
+    pagesRange: Match
+    peerReviewed: Match
+    peerReviewedId: Match
+    publStatus: Match
+    publStatusId: Match
+    publYear: Match
+    publicationType: Match
+    publicationTypeId: Match
+    publisher: Match
+    publisherDetails: PublisherMatchFields
+    pubmedId: Match
+    scopusId: Match
+    sourceOfInfo: Match
+    srcAuthors: Match
+    status: Match
+    storageMedium: Match
+    titleInOtherLanguage: Match
+    typeOfThesis: Match
+    volumeOfSeries: Match
+    websiteName: Match
+}
+
+input PublicationPhraseFields {
+    articleNumber: Phrase
+    articleNumberWwu: Phrase
+    bookTitle: Phrase
+    broadcastShow: Phrase
+    broadcastStation: Phrase
+    cfAbstr: Phrase
+    cfCityTown: Phrase
+    cfEdition: Phrase
+    cfEndPage: Phrase
+    cfIsbn: Phrase
+    cfIssn: Phrase
+    cfIssue: Phrase
+    cfLang: cfLangPhraseFields
+    cfLangOfTranslatedTitle: cfLangPhraseFields
+    cfSeries: Phrase
+    cfStartPage: Phrase
+    cfTitle: Phrase
+    cfUri: Phrase
+    cfVol: Phrase
+    comments: Phrase
+    conferenceVenue: Phrase
+    country: CountryPhraseFields
+    distributedBy: Phrase
+    doi: Phrase
+    editorList: Phrase
+    externalOrInternal: Phrase
+    graduationOrga: Phrase
+    graduationType: Phrase
+    graduationYear: Phrase
+    isPreprint: Phrase
+    isiId: Phrase
+    journal: JournalPhraseFields
+    journalName: Phrase
+    keywords: Phrase
+    nameOfConference: Phrase
+    numberOfPages: Phrase
+    objectOfRecension: Phrase
+    pagesRange: Phrase
+    peerReviewed: Phrase
+    publStatus: Phrase
+    publicationType: Phrase
+    publisher: Phrase
+    publisherDetails: PublisherPhraseFields
+    pubmedId: Phrase
+    scopusId: Phrase
+    sourceOfInfo: Phrase
+    srcAuthors: Phrase
+    storageMedium: Phrase
+    titleInOtherLanguage: Phrase
+    typeOfThesis: Phrase
+    volumeOfSeries: Phrase
+    websiteName: Phrase
+}
+
+input PublicationRangeFields {
+    cfLang: cfLangRangeFields
+    cfLangOfTranslatedTitle: cfLangRangeFields
+    cfResPublDate: Range
+    cfTotalPages: Range
+    country: CountryRangeFields
+    externalOrInternalId: Range
+    id: Range
+    identifierC4: Range
+    journal: JournalRangeFields
+    peerReviewedId: Range
+    publStatusId: Range
+    publYear: Range
+    publicationTypeId: Range
+    publisherDetails: PublisherRangeFields
+    status: Range
+}
+
+input PublicationSortFields {
+    cfTitle: SortField
+    id: SortField
+    publYear: SortField
+    status: SortField
+}
+
+input PublicationWildcardFields {
+    articleNumber: Wildcard
+    articleNumberWwu: Wildcard
+    bookTitle: Wildcard
+    broadcastShow: Wildcard
+    broadcastStation: Wildcard
+    cfAbstr: Wildcard
+    cfCityTown: Wildcard
+    cfEdition: Wildcard
+    cfEndPage: Wildcard
+    cfIsbn: Wildcard
+    cfIssn: Wildcard
+    cfIssue: Wildcard
+    cfLang: cfLangWildcardFields
+    cfLangOfTranslatedTitle: cfLangWildcardFields
+    cfSeries: Wildcard
+    cfStartPage: Wildcard
+    cfTitle: Wildcard
+    cfUri: Wildcard
+    cfVol: Wildcard
+    comments: Wildcard
+    conferenceVenue: Wildcard
+    country: CountryWildcardFields
+    distributedBy: Wildcard
+    doi: Wildcard
+    editorList: Wildcard
+    externalOrInternal: Wildcard
+    graduationOrga: Wildcard
+    graduationType: Wildcard
+    graduationYear: Wildcard
+    isPreprint: Wildcard
+    isiId: Wildcard
+    journal: JournalWildcardFields
+    journalName: Wildcard
+    keywords: Wildcard
+    nameOfConference: Wildcard
+    numberOfPages: Wildcard
+    objectOfRecension: Wildcard
+    pagesRange: Wildcard
+    peerReviewed: Wildcard
+    publStatus: Wildcard
+    publicationType: Wildcard
+    publisher: Wildcard
+    publisherDetails: PublisherWildcardFields
+    pubmedId: Wildcard
+    scopusId: Wildcard
+    sourceOfInfo: Wildcard
+    srcAuthors: Wildcard
+    storageMedium: Wildcard
+    titleInOtherLanguage: Wildcard
+    typeOfThesis: Wildcard
+    volumeOfSeries: Wildcard
+    websiteName: Wildcard
+}
+
+input PublisherListSelect {
+    filter: [PublisherListSelectFilter]
+    mustNot: [PublisherListSelectMustNot]
+}
+
+input PublisherListSelectFilter {
+    match: PublisherMatchFields
+    phrase: PublisherPhraseFields
+    queryString: QueryString
+    range: PublisherRangeFields
+    wildcard: PublisherWildcardFields
+}
+
+input PublisherListSelectMustNot {
+    match: PublisherMatchFields
+    phrase: PublisherPhraseFields
+    queryString: QueryString
+    range: PublisherRangeFields
+    wildcard: PublisherWildcardFields
+}
+
+input PublisherMatchFields {
+    alternativeNameOfPublisher: Match
+    id: Match
+    identifierC4: Match
+    name: Match
+    placeOfPublisher: Match
+    status: Match
+}
+
+input PublisherPhraseFields {
+    alternativeNameOfPublisher: Phrase
+    name: Phrase
+    placeOfPublisher: Phrase
+}
+
+input PublisherRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input PublisherSortFields {
+    id: SortField
+    name: SortField
+    status: SortField
+}
+
+input PublisherWildcardFields {
+    alternativeNameOfPublisher: Wildcard
+    name: Wildcard
+    placeOfPublisher: Wildcard
+}
+
+input QueryString {
+    defaultField: String
+    defaultOperator: DefaultOperator
+    fields: [String]
+    query: String!
+}
+
+input Range {
+    gt: String
+    gte: String
+    lt: String
+    lte: String
+}
+
+input ResearchFocusListSelect {
+    filter: [ResearchFocusListSelectFilter]
+    mustNot: [ResearchFocusListSelectMustNot]
+}
+
+input ResearchFocusListSelectFilter {
+    match: ResearchFocusMatchFields
+    phrase: ResearchFocusPhraseFields
+    queryString: QueryString
+    range: ResearchFocusRangeFields
+    wildcard: ResearchFocusWildcardFields
+}
+
+input ResearchFocusListSelectMustNot {
+    match: ResearchFocusMatchFields
+    phrase: ResearchFocusPhraseFields
+    queryString: QueryString
+    range: ResearchFocusRangeFields
+    wildcard: ResearchFocusWildcardFields
+}
+
+input ResearchFocusMatchFields {
+    description: Match
+    id: Match
+    identifierC4: Match
+    name: Match
+    status: Match
+}
+
+input ResearchFocusPhraseFields {
+    description: Phrase
+    name: Phrase
+}
+
+input ResearchFocusRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input ResearchFocusSortFields {
+    id: SortField
+    name: SortField
+    status: SortField
+}
+
+input ResearchFocusWildcardFields {
+    description: Wildcard
+    name: Wildcard
+}
+
+input SortField {
+    missing: MissingOptions
+    order: OrderOptions
+}
+
+input TalkListSelect {
+    filter: [TalkListSelectFilter]
+    mustNot: [TalkListSelectMustNot]
+}
+
+input TalkListSelectFilter {
+    match: TalkMatchFields
+    phrase: TalkPhraseFields
+    queryString: QueryString
+    range: TalkRangeFields
+    wildcard: TalkWildcardFields
+}
+
+input TalkListSelectMustNot {
+    match: TalkMatchFields
+    phrase: TalkPhraseFields
+    queryString: QueryString
+    range: TalkRangeFields
+    wildcard: TalkWildcardFields
+}
+
+input TalkMatchFields {
+    abstract: Match
+    cfLang: cfLangMatchFields
+    dateOfTalk: Match
+    doi: Match
+    endDateOfEvent: Match
+    id: Match
+    identifierC4: Match
+    isInvitedTalk: Match
+    isKeynote: Match
+    keywords: Match
+    nameOfEvent: Match
+    organiserOfEvent: Match
+    speakers: Match
+    startDateOfEvent: Match
+    status: Match
+    title: Match
+    typeOfTalk: Match
+    typeOfTalkId: Match
+    urlOfEvent: Match
+    urlOfSlides: Match
+    venueOfEvent: Match
+}
+
+input TalkPhraseFields {
+    abstract: Phrase
+    cfLang: cfLangPhraseFields
+    doi: Phrase
+    keywords: Phrase
+    nameOfEvent: Phrase
+    organiserOfEvent: Phrase
+    speakers: Phrase
+    title: Phrase
+    typeOfTalk: Phrase
+    urlOfEvent: Phrase
+    urlOfSlides: Phrase
+    venueOfEvent: Phrase
+}
+
+input TalkRangeFields {
+    cfLang: cfLangRangeFields
+    dateOfTalk: Range
+    endDateOfEvent: Range
+    id: Range
+    identifierC4: Range
+    startDateOfEvent: Range
+    status: Range
+    typeOfTalkId: Range
+}
+
+input TalkSortFields {
+    dateOfTalk: SortField
+    endDateOfEvent: SortField
+    id: SortField
+    nameOfEvent: SortField
+    startDateOfEvent: SortField
+    status: SortField
+    title: SortField
+}
+
+input TalkWildcardFields {
+    abstract: Wildcard
+    cfLang: cfLangWildcardFields
+    doi: Wildcard
+    keywords: Wildcard
+    nameOfEvent: Wildcard
+    organiserOfEvent: Wildcard
+    speakers: Wildcard
+    title: Wildcard
+    typeOfTalk: Wildcard
+    urlOfEvent: Wildcard
+    urlOfSlides: Wildcard
+    venueOfEvent: Wildcard
+}
+
+input Wildcard {
+    value: String!
+}
+
+input WorkExperienceListSelect {
+    filter: [WorkExperienceListSelectFilter]
+    mustNot: [WorkExperienceListSelectMustNot]
+}
+
+input WorkExperienceListSelectFilter {
+    match: WorkExperienceMatchFields
+    phrase: WorkExperiencePhraseFields
+    queryString: QueryString
+    range: WorkExperienceRangeFields
+    wildcard: WorkExperienceWildcardFields
+}
+
+input WorkExperienceListSelectMustNot {
+    match: WorkExperienceMatchFields
+    phrase: WorkExperiencePhraseFields
+    queryString: QueryString
+    range: WorkExperienceRangeFields
+    wildcard: WorkExperienceWildcardFields
+}
+
+input WorkExperienceMatchFields {
+    endMonth: Match
+    endYear: Match
+    id: Match
+    identifierC4: Match
+    isPointOfTime: Match
+    name: Match
+    startMonth: Match
+    startYear: Match
+    status: Match
+    url: Match
+}
+
+input WorkExperiencePhraseFields {
+    name: Phrase
+    url: Phrase
+}
+
+input WorkExperienceRangeFields {
+    endMonth: Range
+    endYear: Range
+    id: Range
+    identifierC4: Range
+    startMonth: Range
+    startYear: Range
+    status: Range
+}
+
+input WorkExperienceSortFields {
+    endMonth: SortField
+    endYear: SortField
+    id: SortField
+    name: SortField
+    startMonth: SortField
+    startYear: SortField
+    status: SortField
+}
+
+input WorkExperienceWildcardFields {
+    name: Wildcard
+    url: Wildcard
+}
+
+input cfLangListSelect {
+    filter: [cfLangListSelectFilter]
+    mustNot: [cfLangListSelectMustNot]
+}
+
+input cfLangListSelectFilter {
+    match: cfLangMatchFields
+    phrase: cfLangPhraseFields
+    queryString: QueryString
+    range: cfLangRangeFields
+    wildcard: cfLangWildcardFields
+}
+
+input cfLangListSelectMustNot {
+    match: cfLangMatchFields
+    phrase: cfLangPhraseFields
+    queryString: QueryString
+    range: cfLangRangeFields
+    wildcard: cfLangWildcardFields
+}
+
+input cfLangMatchFields {
+    cfLangCode: Match
+    cfName: Match
+    id: Match
+    identifierC4: Int
+    langCode6392: Match
+    status: Match
+}
+
+input cfLangPhraseFields {
+    cfLangCode: Phrase
+    cfName: Phrase
+    langCode6392: Phrase
+}
+
+input cfLangRangeFields {
+    id: Range
+    identifierC4: Range
+    status: Range
+}
+
+input cfLangSortFields {
+    id: SortField
+    status: SortField
+}
+
+input cfLangWildcardFields {
+    cfLangCode: Wildcard
+    cfName: Wildcard
+    langCode6392: Wildcard
+}

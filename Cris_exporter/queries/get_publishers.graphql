@@ -1,0 +1,20 @@
+query {
+    publisherList(first: 100, after: "") {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        list {
+            node {
+                alternativeNameOfPublisher
+                id
+                identifierC4
+                name
+                placeOfPublisher
+                status
+            }
+        }
+    }
+}

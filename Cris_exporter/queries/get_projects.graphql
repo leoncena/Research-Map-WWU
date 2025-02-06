@@ -1,0 +1,35 @@
+query {
+    projectList(first: 100, after: "") {
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        list {
+            node {
+                cfAbstr
+                cfAcro
+                cfEndDate
+                cfKeyw
+                cfStartDate
+                cfTitle
+                cfUri
+                dfgGeprisId
+                dfgProjectId
+                fundRefNo
+                fundingBody
+                fundingPeriod
+                id
+                identifierC4
+                initialStartDate
+                projectStatus
+                projectStatusId
+                status
+                teaser
+                typeOfProject
+                typeOfProjectId
+            }
+        }
+    }
+}
